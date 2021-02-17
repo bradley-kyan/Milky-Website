@@ -1,12 +1,56 @@
-function scroll(var imgframe, var directory, int amount, int speed, var type){
+/*
+TO DO:
+
+	1. Get src of folder
+	2. Get folder contents
+	3. Folder contents to array
+	4. Sort array
+	5. Timed function from speed
+	6. Get current image from array
+	7. Image change src string build
+	8. Change src of element
+
+*/
+
+/*
+(function ($) {
+
+	var methods = {
+		
+		init: function (options) {
+			
+			var p = {
+				
+				speed: 66,
+				type: .png,
+				amount: 1,
+				href: ./
+								
+			}
+			
+			if (options) {
+				$.extend(p, options);
+			}
+			
+			
+			
+		}
+		
+	}
+
+}
+
+
+*/
+
+function scroll(directory, amount, speed, type){
 	
-	//imgframe = manual set of the current frame
 	//directory = the directory of the images as given through function
 	//amount = the amount of images located in the directory
 	//speed = the speed of imagae changing
 	
 	var currentImg;
-	var fileListArray[];
+	var fileListArray = new Array(100).fill(undefined);;
 	
 	//get filenames from folder
 	const fs = require('fs');	
@@ -28,9 +72,14 @@ function scroll(var imgframe, var directory, int amount, int speed, var type){
 	
 	//change image after interval
 	var i = 0;
-	setTimeout(while(i <= amount){
+	setTimeout(while(var i <= amount){
 		currentImg = diectory + '/' + fileListArray[i] + '.' + type;
 		i++;
+		
+		//get image frame to change src
+		
+		var getFrame = document.getElementById(imgframe);
+		getFrame.src = currentImg;
 		
 	}, speed)
 	
@@ -40,6 +89,4 @@ function scroll(var imgframe, var directory, int amount, int speed, var type){
 
 }	
 
-	//get image frame to change src
-	var getFrame = document.getElementById($'imgframe');
-	getFrame.src = currentImg;
+
