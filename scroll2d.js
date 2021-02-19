@@ -43,50 +43,54 @@ TO DO:
 
 */
 
-function scroll(directory, amount, speed, type){
+function scroll(imgframe, directory, speed){
 	
 	//directory = the directory of the images as given through function
 	//amount = the amount of images located in the directory
 	//speed = the speed of imagae changing
-	
+		console.log(imgframe + ' / ' + directory + ' / ' + speed);
+
 	var currentImg;
-	var fileListArray = new Array(100).fill(undefined);;
+	var fileListArray = new Array();
 	
 	//get filenames from folder
-	const fs = require('fs');	
+
+	const fs = require('fs');
+	fs.readdir(directory, function (err, files) {
+    
+	if(err){
+	return;
+	};
 	
-	fs.readdir(directory, (err, files) => {
-		files.forEach(file => {
-			fileListArray.push(file);
-		});
-	});
+    //listing all files using forEach
+    files.forEach(function (file) {
+		fileListArray.push(file);
+    })
+	})
 	
 	fileListArray.sort();
 	
-
-	//create array from file amount
-	
-	while(fileListArray.length > amount){
-		fileListArray.pop();
-	}
-	
 	//change image after interval
 	var i = 0;
-	setTimeout(while(var i <= amount){
-		currentImg = diectory + '/' + fileListArray[i] + '.' + type;
-		i++;
-		
-		//get image frame to change src
-		
-		var getFrame = document.getElementById(imgframe);
-		getFrame.src = currentImg;
-		
-	}, speed)
 	
-	if(i > amount){
+	setTimeout(
+		function(){	
+			while(i <= fileListArray.length)
+			{
+			
+				currentImg = diectory + '/' + fileListArray[i];
+				i++;
+				
+				//get image frame to change src
+				document.getElementById(imgframe).src = currentImg;
+			
+			}
+		}, 
+	speed);
+	
+	if(i > fileListArray.length){
 		i = 0;
 	}
-
-}	
+}
 
 
