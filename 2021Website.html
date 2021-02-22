@@ -18,34 +18,29 @@
   </button>
 
 	<script type="text/javascript">
+		var state = 0;
 	$( "#navbarButton" ).click(
 		function(){
-			
-			document.getElementById('about').style.display = 'block';
-			
+			if(state == 0){
+				document.getElementById('navContainer').style.display = 'block';
+				state = 1;
+			   }
+			else{
+				document.getElementById('navContainer').style.display = 'none';
+				state = 0;
+			}
 		})
 		
 	</script>
-	
-  <div class="collapse"  style="z-index: 1; position: absolute" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>    
-    </ul>
-  </div>  
+
 </nav>
 <br>
 
-<div class="container">
-
-</div>
+<div class="container-fluid" id="navContainer" style="background-color: #343A40; right: 0; top: 0; z-index: 1; display: none; position: absolute; overflow: hidden; width: 70vw; height: 70vh">
+	<div class="collapse"  style="color: aqua; position: absolute" id="collapsibleNavbar">
+    
+  </div>  
+</div>	
 
 </body>
 </html>
