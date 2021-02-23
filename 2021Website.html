@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+@media(max-height: 500px) {
+.nav-item {
+	font-size: 25px;
+}
+}
+
+@media(min-height: 501px) {
+.nav-item {
+	font-size: min(max(40px), 5vh);
+}
+}
+
+	
+html {
+	scroll-behavior: smooth;
+}
+</style>
 </head>
 <body>
-
-<nav class="navbar bg-dark navbar-dark">
-  <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
-  <button class="navbar-toggler" type="button" id="navbarButton">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
+<nav class="navbar bg-dark navbar-dark"> <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
+	<button class="navbar-toggler" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
 	<script type="text/javascript">
 		var state = 0;
+		var id = null;
 	$( "#navbarButton" ).click(
 		function(){
 			if(state == 0){
 				document.getElementById('navContainer').style.display = 'block';
 				state = 1;
+				document.getElementById('navContainer').style.marginRight = '0px';
 			   }
+				
 			else{
 				document.getElementById('navContainer').style.display = 'none';
 				state = 0;
+				document.getElementById('navContainer').style.marginRight = 'calc(100% + 10px)';
 			}
 		})
 		
-	</script>
-
+	</script> 
 </nav>
 <br>
-
-<div class="container-fluid" id="navContainer" style="background-color: #343A40; right: 0; top: 0; z-index: 1; display: none; position: absolute; overflow: hidden; width: 70vw; height: 70vh">
-	<div class="collapse"  style="color: aqua; position: absolute" id="collapsibleNavbar">
-    
-  </div>  
-</div>	
-
+<div class="container-fluid" id="navContainer" style="background-color: #343A40; margin-right: calc(100% + 10px); z-index: 1; display: none; position: relative; float: right; overflow: hidden; width: 70vw; height: 70vh">
+	<div class="container-fluid"  style="color: aqua; position: relative; z-index: 2" id="collapsibleNavbar">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
+			<li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
+		</ul>
+	</div>
+</div>
 </body>
 </html>
-
-
