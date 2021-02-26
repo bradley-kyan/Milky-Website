@@ -8,6 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script/anime-3.2.1/anime.min.js"></script>
 <style>
 @media(max-height: 500px) {
 .nav-item {
@@ -20,8 +21,6 @@
 	font-size: min(max(40px), 5vh);
 }
 }
-
-	
 html {
 	scroll-behavior: smooth;
 }
@@ -38,8 +37,10 @@ html {
 			if(state == 0){
 				document.getElementById('navContainer').style.display = 'block';
 				state = 1;
-				document.getElementById('navContainer').style.marginRight = '0px';
-			   }
+				document.getElementById('navContainer').style.marginRight = 'calc(0px - 10px)';
+
+			
+			}
 				
 			else{
 				document.getElementById('navContainer').style.display = 'none';
