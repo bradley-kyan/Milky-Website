@@ -21,9 +21,25 @@
 	font-size: min(max(40px), 5vh);
 }
 }
+
+	@media screen and (max-width: 700)	{
+		
+		#navContainer{
+			width: 70vw; 
+			height: 70vh
+		}
+	}
+
+		#navContainer{
+			width: 50vw; 
+			height: 50vh
+	}
+	
 html {
 	scroll-behavior: smooth;
 }
+	
+	
 </style>
 </head>
 <body>
@@ -32,27 +48,37 @@ html {
 	<script type="text/javascript">
 		var state = 0;
 		var id = null;
-	$( "#navbarButton" ).click(
-		function(){
-			if(state == 0){
-				document.getElementById('navContainer').style.display = 'block';
-				state = 1;
-				document.getElementById('navContainer').style.marginRight = 'calc(0px - 10px)';
-
-			
-			}
-				
-			else{
-				document.getElementById('navContainer').style.display = 'none';
-				state = 0;
-				document.getElementById('navContainer').style.marginRight = 'calc(100% + 10px)';
-			}
+	$( "#navbarButton" ).click(function(){
+		
+		if (state == 0){
+		
+		anime({
+		  targets: '#navContainer',
+		  translateX: $(window).width() - ($(window).width()/3.5),
+		  easing: 'easeInOutSine',
 		})
+		state = 1;
+		}
+		else{
+		
+		anime({
+		  targets: '#navContainer',
+		  translateX: 0,
+		  easing: 'easeInOutSine'
+		})
+		state = 0;
+		}
+		
+		
+	})
+
+		
+
 		
 	</script> 
 </nav>
-<br>
-<div class="container-fluid" id="navContainer" style="background-color: #343A40; margin-right: calc(100% + 10px); z-index: 1; display: none; position: relative; float: right; overflow: hidden; width: 70vw; height: 70vh">
+<div style="width: 100vw; overflow: hidden">
+<div class="container-fluid" id="navContainer" style="background-color: #343A40; z-index: 1; position: relative; float: right">
 	<div class="container-fluid"  style="color: aqua; position: relative; z-index: 2" id="collapsibleNavbar">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
@@ -61,5 +87,6 @@ html {
 		</ul>
 	</div>
 </div>
+	</div>
 </body>
 </html>
