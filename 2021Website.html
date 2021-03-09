@@ -22,17 +22,41 @@
 }
 }
 
-	@media screen and (max-width: 700)	{
+@media(max-width: 500px)	{
 		
-		#navContainer{
-			width: 70vw; 
-			height: 70vh
-		}
+	#navContainer{
+		width: 100vw; 
+		padding: 15px;
+		padding-right: 50px
 	}
+}
 
-		#navContainer{
-			width: 50vw; 
-			height: 50vh
+@media(min-width: 501px)	{
+		
+	#navContainer{
+		width: 80vw; 
+		padding: 15px;
+		padding-right: 50px
+	}
+}
+
+@media(min-width: 700px)	{
+		
+	#navContainer{
+		width: 70vw; 
+		padding: 15px;
+		padding-right: 50px
+	}
+}
+
+
+@media(min-width: 950px)	{
+		
+	#navContainer{
+		width: 50vw; 
+		padding: 15px;
+		padding-right: 50px
+}
 	}
 	
 html {
@@ -44,18 +68,25 @@ html {
 </head>
 <body>
 <nav class="navbar bg-dark navbar-dark"> <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
-	<button class="navbar-toggler" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+<button class="navbar-toggler" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+	
 	<script type="text/javascript">
-		var state = 0;
+		var state = 1;
 		var id = null;
+	
+		$(document).ready(function(){
+			document.getElementById("navContainer").style.transform = "translateX("+ $(window).width() +"px)";
+		})
+		
+	
 	$( "#navbarButton" ).click(function(){
 		
 		if (state == 0){
 		
 		anime({
 		  targets: '#navContainer',
-		  translateX: $(window).width() - ($(window).width()/3.5),
-		  easing: 'easeInOutSine',
+		  translateX: $(window).width() + 5,
+		  easing: 'spring(1, 90, 80, 0)',
 		})
 		state = 1;
 		}
@@ -64,18 +95,25 @@ html {
 		anime({
 		  targets: '#navContainer',
 		  translateX: 0,
-		  easing: 'easeInOutSine'
+		  easing: 'spring(1, 90, 80, 0)'
 		})
 		state = 0;
-		}
-		
-		
+		}		
 	})
-
-		
-
-		
+	$(window).resize(function() {
+	
+	if(state == 1){
+	
+		anime({
+		  targets: '#navContainer',
+		  translateX: $(window).width() + 5,
+		  easing: 'linear',
+		})
+		}
+	});
+				
 	</script> 
+	
 </nav>
 <div style="width: 100vw; overflow: hidden">
 <div class="container-fluid" id="navContainer" style="background-color: #343A40; z-index: 1; position: relative; float: right">
