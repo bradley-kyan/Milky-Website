@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 <script src="script/anime-3.2.1/anime.min.js"></script>
 <style>
 @media(max-height: 500px) {
@@ -22,54 +22,70 @@
 }
 }
 
-@media(max-width: 500px)	{
-		
-	#navContainer{
-		width: 100vw; 
-		padding: 15px;
-		padding-right: 50px
-	}
+@media(max-width: 500px) {
+#navContainer {
+	width: 100vw;
+	padding: 15px;
+	padding-right: 50px
+}
 }
 
-@media(min-width: 501px)	{
-		
-	#navContainer{
-		width: 80vw; 
-		padding: 15px;
-		padding-right: 50px
-	}
+@media(min-width: 501px) {
+#navContainer {
+	width: 80vw;
+	padding: 15px;
+	padding-right: 50px
+}
 }
 
-@media(min-width: 700px)	{
-		
-	#navContainer{
-		width: 70vw; 
-		padding: 15px;
-		padding-right: 50px
-	}
+@media(min-width: 700px) {
+#navContainer {
+	width: 70vw;
+	padding: 15px;
+	padding-right: 50px
+}
 }
 
-
-@media(min-width: 950px)	{
-		
-	#navContainer{
-		width: 50vw; 
-		padding: 15px;
-		padding-right: 50px
+@media(min-width: 950px) {
+#navContainer {
+	width: 50vw;
+	padding: 15px;
+	padding-right: 50px
 }
-	}
-	
+}
 html {
 	scroll-behavior: smooth;
 }
-	
-	
+.body {
+	height: 100vw;
+	width: 80vw;
+	z-index: 2;
+	background-color: white;
+}
+.mastfoot {
+	color: rgba(255, 255, 255, .5);
+	background-color: #343A40;
+	text-align: center;
+}
+.mt-auto, .my-auto {
+	margin-top: auto!important;
+}
+.body-behind {
+	background-color: white;
+	width: 100vw;
+	overflow: hidden;
+	z-index: -1;
+		background-size: 2%;
+  	background-image: url("sprinkle.svg");
+  	background-repeat: repeat;
+}
+
 </style>
 </head>
 <body>
-<nav class="navbar bg-dark navbar-dark"> <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
-<button class="navbar-toggler" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
-	
+
+<nav class="navbar navbar-light" style="background-color: #47514C"> <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
+	<button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
 	<script type="text/javascript">
 		var state = 1;
 		var id = null;
@@ -113,18 +129,25 @@ html {
 	});
 				
 	</script> 
-	
 </nav>
-<div style="width: 100vw; overflow: hidden">
-<div class="container-fluid" id="navContainer" style="background-color: #343A40; z-index: 1; position: relative; float: right">
-	<div class="container-fluid"  style="color: aqua; position: relative; z-index: 2" id="collapsibleNavbar">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
-			<li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
-		</ul>
+<div class="body-behind">
+	<div class="container-fluid" id="navContainer" style="background-color: #343A40; z-index: 2; position: relative; float: right">
+		<div class="container-fluid"  style="color: aqua; position: relative; z-index: 2" id="collapsibleNavbar">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
+				<li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
+				<li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
+			</ul>
+		</div>
+	</div>
+	<div class="container body"> 
+	
 	</div>
 </div>
+<footer class="mastfoot mt-auto">
+	<div class="inner">
+		<p>test footer</p>
 	</div>
+</footer>
 </body>
 </html>
