@@ -12,86 +12,143 @@
 <style>
 @media(max-height: 500px) {
 .nav-item {
-	font-size: 25px;
+    font-size: 25px;
 }
 }
 
 @media(min-height: 501px) {
 .nav-item {
-	font-size: min(max(40px), 5vh);
+    font-size: min(max(40px), 5vh);
 }
 }
 
 @media(max-width: 500px) {
 #navContainer {
-	width: 100vw;
-	padding: 15px;
-	padding-right: 50px
+    width: 100vw;
+    padding: 15px;
+    padding-right: 50px;
 }
 }
 
 @media(min-width: 501px) {
 #navContainer {
-	width: 80vw;
-	padding: 15px;
-	padding-right: 50px
+    width: 80vw;
+    padding: 15px;
+    padding-right: 50px
 }
 }
 
 @media(min-width: 700px) {
 #navContainer {
-	width: 70vw;
-	padding: 15px;
-	padding-right: 50px
+    width: 70vw;
+    padding: 15px;
+    padding-right: 50px
 }
 }
 
 @media(min-width: 950px) {
 #navContainer {
-	width: 50vw;
-	padding: 15px;
-	padding-right: 50px
+    width: 50vw;
+    padding: 15px;
+    padding-right: 50px
 }
 }
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 .body {
-	height: 100vw;
-	width: 80vw;
-	z-index: 2;
-	background-color: white;
+    height: 100vw;
+    width: 80vw;
+    background-color: white;
 }
 .mastfoot {
-	color: rgba(255, 255, 255, .5);
-	background-color: #343A40;
-	text-align: center;
+    color: rgba(255, 255, 255, .5);
+    background-color: #47514C;
+    text-align: center;
+    z-index: 3
 }
 .mt-auto, .my-auto {
-	margin-top: auto!important;
+    margin-top: auto!important;
 }
 .body-behind {
-	background-color: white;
-	width: 100vw;
-	overflow: hidden;
-	z-index: -1;
-		background-size: 2%;
-  	background-image: url("sprinkle.svg");
-  	background-repeat: repeat;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 5;
+    position: fixed
 }
-
+#navContainer {
+    background-color: #F9E3D9;
+    z-index: 4;
+    display: inherit;
+    position: fixed;
+    right: 0;
+}
+#imgRotate {
+    z-index: -1;
+    overflow: hidden;
+    position: relative;
+    min-height: var(--height);
+}
+#imgRotate:before {
+    content: "";
+    z-index: -1;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: url("sprinkle2.svg") 0 0 repeat;
+    background-size: 2%;
+    position: absolute;
+    transform: rotate(var(--rotation));
+}
+.bodyContent {
+    background-color: white;
+    min-height: var(--height);
+    width: 90vw;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+#loadingDiv {
+    height: 100vw;
+    width: 100vw;
+    postion: absolute;
+    z-index: 100;
+    top: 0;
+}
+    .creamContainer{
+        transform: translate(50%, 50%)
+    }
+:root {
+--rotation: 0deg;
+--height;
+}
 </style>
 </head>
 <body>
+<script type="text/javascript">
+    $('body').append('<div id="loadingDiv"><div class="loader"></div></div>');
+$(window).on('load', function(){
+  setTimeout(removeLoader, 3000);
+});
+function removeLoader(){
+    $( "#loadingDiv" ).fadeOut(500, function() {
+      $( "#loadingDiv" ).remove();
 
-<nav class="navbar navbar-light" style="background-color: #47514C"> <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
-	<button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
-	<script type="text/javascript">
+  });  
+}</script>
+<nav class="navbar navbar-light sticky-top" style="background-color: #F2B79F"> <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
+    <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+    <script type="text/javascript">
 		var state = 1;
 		var id = null;
 	
 		$(document).ready(function(){
 			document.getElementById("navContainer").style.transform = "translateX("+ $(window).width() +"px)";
+            document.documentElement.style.setProperty('--height',  $(window).height()+'px');
 		})
 		
 	
@@ -116,8 +173,38 @@ html {
 		state = 0;
 		}		
 	})
+        
+        var currentRotation = 0;
+        var direction = 1;
+    $(window).scroll(function(){
+        if(currentRotation >= 360 || currentRotation <= -360){
+            if(direction == 1){
+                direction = -1;
+                currentRotation = 0;
+            }
+            else{
+                currentRotation = 0;
+                direction = 1;
+            }
+            
+        }
+        else{
+            currentRotation = currentRotation + (direction*(2.5));
+        }
+        
+        document.documentElement.style.setProperty('--rotation',  currentRotation +'deg');
+        console.log(currentRotation);
+    });
+
+        
 	$(window).resize(function() {
 	
+        anime({
+		  targets: '#coneTop',
+		  translateX: 500,
+		  easing: 'linear',
+		});
+        
 	if(state == 1){
 	
 		anime({
@@ -131,23 +218,28 @@ html {
 	</script> 
 </nav>
 <div class="body-behind">
-	<div class="container-fluid" id="navContainer" style="background-color: #343A40; z-index: 2; position: relative; float: right">
-		<div class="container-fluid"  style="color: aqua; position: relative; z-index: 2" id="collapsibleNavbar">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-				<li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
-				<li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
-			</ul>
-		</div>
-	</div>
-	<div class="container body"> 
-	
-	</div>
+    <div id="navContainer">
+        <div class="container-fluid"  style="color: aqua; position: relative" id="collapsibleNavbar"> <span style="background-color: #3A423E; height: 5px"></span>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
+            </ul>
+        </div>
+    </div>
 </div>
-<footer class="mastfoot mt-auto">
-	<div class="inner">
-		<p>test footer</p>
-	</div>
-</footer>
+<div class="bodyContent"> 
+    
+<div class="creamContainer">   
+    <div id="coneTop">
+    <img src="coneTopAsset 1.svg" style="width: 10%">
+    </div>
+    <div id="coneBottom">
+    <img src="coneBottomAsset 2.svg" style="width: 10%">
+    </div>
+</div>     
+    
+    </div>
+<div id="imgRotate"></div>
 </body>
 </html>
