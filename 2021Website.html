@@ -80,16 +80,10 @@ html {
     border-bottom-color: #F2B79F;
     border-left-color: #F2B79F;
 }
-#imgRotate {
-    z-index: -10;
-    overflow: hidden;
-    position: relative;
-    min-height: var(--height);
-}
 #navbarImg {
     width: 90px;
 }
-#imgRotate:before {
+body:before {
     content: "";
     z-index: -1;
     width: 200%;
@@ -406,7 +400,6 @@ var activeButton = 1;
             <!-- /.col-lg-4 --> 
         </div>
     </div>
-    <div id="imgRotate"></div>
 </main>
 </body>
 </html>
