@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>Milky Ice Creams</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="logo.svg">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
@@ -61,15 +62,6 @@ html {
     width: 80vw;
     background-color: white;
 }
-.mastfoot {
-    color: rgba(255, 255, 255, .5);
-    background-color: #47514C;
-    text-align: center;
-    z-index: 3
-}
-.mt-auto, .my-auto {
-    margin-top: auto!important;
-}
 .body-behind {
     width: 100vw;
     overflow: hidden;
@@ -77,21 +69,25 @@ html {
     position: fixed
 }
 #navContainer {
-    background-color: #F2B79F;
+    background-color: #FFFFFF;
     z-index: 4;
     display: inherit;
     position: fixed;
     right: 0;
+    top: 100px;
     border-bottom-style: solid;
     border-left-style: solid;
     border-bottom-color: #F2B79F;
     border-left-color: #F2B79F;
 }
 #imgRotate {
-    z-index: -1;
+    z-index: -10;
     overflow: hidden;
     position: relative;
     min-height: var(--height);
+}
+#navbarImg {
+    width: 90px;
 }
 #imgRotate:before {
     content: "";
@@ -134,15 +130,16 @@ html {
     z-index: 500;
 }
 .nav-link {
-    color: mediumslateblue;
+    color: #6095CF;
 }
-    .flex-equal > * {
-  flex: 1;
-}
-@media (min-width: 768px) {
-  .flex-md-equal > * {
+.flex-equal > * {
     flex: 1;
-  }
+}
+
+@media (min-width: 768px) {
+.flex-md-equal > * {
+    flex: 1;
+}
 }
 :root {
 --rotation: 0deg;
@@ -157,7 +154,8 @@ html {
 
     $(window).on('load', function(){
      window.scrollTo(0, 0);
-        $('.content').hide();  
+        $('.navbar').hide();
+        $('.main').hide();
         
     anime({
 		  targets: '.creamContainer',
@@ -203,29 +201,61 @@ html {
 function removeLoader(){
     $( "#loadingDiv" ).fadeOut(500, function() {
       $( "#loadingDiv" ).remove();
-    $('.content').show();
+    $('.navbar').show();
+        $('.main').show();
+        anime({
+              targets: '#containerFlowIn',
+              translateX: 0,
+              easing: 'easeInOutQuad',
+		  });
+        anime({
+              targets: '#containerFlowIn2',
+              translateX: 0,
+              easing: 'easeInOutQuad',
+            delay: 200
+		  });
+        
   });  
 }</script>
-<div class="content">
-    <nav class="navbar navbar-light sticky-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
-        <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
-        <script type="text/javascript">
+<nav class="navbar navbar-light sticky-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="logo.svg" alt="Navbar Brand"></a>
+    <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+    <script type="text/javascript">
 		var state = 1;
 		var id = null;
 	
 		$(document).ready(function(){
 			document.getElementById("navContainer").style.transform = "translateX("+ $(window).width() +"px)";
+            document.getElementById("containerFlowIn").style.transform = "translateX("+ $(window).width() +"px)";
+            document.getElementById("containerFlowIn2").style.transform = "translateX("+ $(window).width() +"px)";
             document.documentElement.style.setProperty('--height',  $(window).height()+'px');
+            
 		})
+var activeButton = 1;
+	$( "#navbarButton" ).click(function(){ 
+		navToggle(activeButton);
+        if(activeButton == 1){
+          activeButton = 0;  
+        }
+        else{
+            activeButton = 1;
+        }
+	})
+    $('#navbarImg').click(function(){        
+        if(state == 0){
+            navToggle(0);
+            activeButton = 1;
+        }
+        
+    })
 
-	$( "#navbarButton" ).click(function(){
+            
+    function navToggle(toggle){
         
-        
-		if (state == 0){
+        if (state == 0 && toggle == 0){
 		
 		anime({
 		  targets: '#navContainer',
-		  translateX: $(window).width() + 5,
+		  translateX: $(window).width() + 15,
 		  easing: 'spring(1, 90, 80, 0)',
 		});
         anime({
@@ -239,8 +269,9 @@ function removeLoader(){
 		  easing: 'easeInOutQuad',
 		});
 		state = 1;
+        toggle = 0;
 		}
-		else{
+		else if(state == 1 && toggle == 1){
 		
 		anime({
 		  targets: '#navContainer',
@@ -258,9 +289,10 @@ function removeLoader(){
 		  easing: 'easeInOutQuad',
 		});
 		state = 0;
+        toggle = 1;
 		}		
-	})
-        
+    }        
+            
         var currentRotation = 0;
         var direction = 1;
     $(window).scroll(function(){
@@ -280,7 +312,6 @@ function removeLoader(){
         }
         
         document.documentElement.style.setProperty('--rotation',  currentRotation +'deg');
-        console.log(currentRotation);
     });
 
         
@@ -312,107 +343,70 @@ function removeLoader(){
 		  easing: 'spring(1, 80, 10, 10)',
           duration: 100
 		});
-    })
-            
-	</script> 
-    </nav>
-    <div class="body-behind">
-        
-        <div id="navContainer">
-            <div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><h1 style="color: #200F87">Our Flavours:</h1> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Chocolate Chip Off the Block <span class="sr-only">(current)</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Punky Road</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Care'aml Dream</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Masterfull Mellon</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Mouthwatering Marshmellow</a> </li>
-                </ul>
-            </div>
+    })    
+	</script>
+    <div id="navContainer">
+        <div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <h1 style="color: #200F87">Our Flavours:</h1>
+                </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Chocolate Chip Off the Block <span class="sr-only">(current)</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Punky Road</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Care'aml Dream</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Masterfull Mellon</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#">Mouthwatering Marshmellow</a> </li>
+            </ul>
         </div>
     </div>
-    <div id="imgRotate">
-    <main>
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">Punny headline</h1>
-      <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+</nav>
+<main class="main">
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="containerFlowIn">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 fw-normal">Ice Cream <span style="border-bottom: 2px solid black;">Delivered</span> in a New Way</h1>
+            <p class="lead fw-normal">From our shop to your door, enjoy premium Belguim ice cream without restraint</p>
+            <a class="btn btn-outline-secondary" href="#">Learn More</a> </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
     </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="containerFlowIn2">
+        <div class="row">
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777"></rect>
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+                <h2>Heading</h2>
+                <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777"></rect>
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+                <h2>Heading</h2>
+                <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+                <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#777"></rect>
+                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                </svg>
+                <h2>Heading</h2>
+                <p>And lastly this, the third column of representative placeholder content.</p>
+                <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            </div>
+            <!-- /.col-lg-4 --> 
+        </div>
     </div>
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-  </div>
+    <div id="imgRotate"></div>
 </main>
-    </div>
-    </div>
-
 </body>
 </html>
