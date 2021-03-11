@@ -12,13 +12,13 @@
 <style>
 @media(max-height: 500px) {
 .nav-item {
-    font-size: 25px;
+    font-size: 18px;
 }
 }
 
 @media(min-height: 501px) {
 .nav-item {
-    font-size: min(max(40px), 5vh);
+    font-size: min(max(30px), 3.5vh);
 }
 }
 
@@ -54,7 +54,7 @@
 }
 }
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 .body {
     height: 100vw;
@@ -77,11 +77,15 @@ html {
     position: fixed
 }
 #navContainer {
-    background-color: #F9E3D9;
+    background-color: #F2B79F;
     z-index: 4;
     display: inherit;
     position: fixed;
     right: 0;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-color: #F2B79F;
+    border-left-color: #F2B79F;
 }
 #imgRotate {
     z-index: -1;
@@ -113,36 +117,99 @@ html {
     position: absolute;
 }
 #loadingDiv {
-    height: 100vw;
+    height: var(--height);
     width: 100vw;
     postion: absolute;
     z-index: 100;
     top: 0;
+    overflow: hidden;
+    background-color: #F2B79F;
+    display: flex;
+    justify-content: center;
 }
-    .creamContainer{
-        transform: translate(50%, 50%)
-    }
+.creamContainer {
+    align-self: center;
+    height: 25vw;
+    padding-top: 25vw;
+    z-index: 500;
+}
+.nav-link {
+    color: mediumslateblue;
+}
+    .flex-equal > * {
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    flex: 1;
+  }
+}
 :root {
 --rotation: 0deg;
 --height;
+--width;
 }
 </style>
 </head>
 <body>
 <script type="text/javascript">
-    $('body').append('<div id="loadingDiv"><div class="loader"></div></div>');
-$(window).on('load', function(){
-  setTimeout(removeLoader, 3000);
+    $('body').append('<div id="loadingDiv"><div class="loader"> <div class="creamContainer">   <div id="coneTop"><img src="coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
+
+    $(window).on('load', function(){
+     window.scrollTo(0, 0);
+        $('.content').hide();  
+        
+    anime({
+		  targets: '.creamContainer',
+		    translateX: [
+            { value: 100, duration: 1000, delay: 500 },
+            { value: 0, duration: 1000, delay: 500 },
+            { value: 0, duration: 1000, delay: 500 }
+          ],
+          translateY: [
+            { value: -40, duration: 500 },
+            { value: 40, duration: 500, delay: 1000 },
+            { value: 0, duration: 500, delay: 1000 }
+          ],
+          scaleX: [
+            { value: 1.5, duration: 100, delay: 500, easing: 'easeOutExpo' },
+            { value: 1, duration: 900 },
+            { value: 1.5, duration: 100, delay: 500, easing: 'easeOutExpo' },
+            { value: 1, duration: 900 }
+          ],
+          scaleY: [
+            { value: [1.15, 1], duration: 500 },
+            { value: 1.25, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+            { value: 1, duration: 450 },
+            { value: 1.25, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+            { value: 1, duration: 450 }
+          ],
+
+          duration: 3000,
+          easing: 'easeOutElastic(1, .8)',
+          loop: true
+		});
+        anime.timeline({
+          easing: 'easeInOutQuad',
+          loop: true
+        })
+        .add({ targets: '#loadingDiv',  background: '#FFFFFF' }, 100)
+        .add({ targets: '#loadingDiv',  background: '#F2B79F' }, 500)
+  setTimeout(removeLoader, 3700);
 });
+    
+    
+    
 function removeLoader(){
     $( "#loadingDiv" ).fadeOut(500, function() {
       $( "#loadingDiv" ).remove();
-
+    $('.content').show();
   });  
 }</script>
-<nav class="navbar navbar-light sticky-top" style="background-color: #F2B79F"> <a class="navbar-brand" href="#"> <img src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
-    <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
-    <script type="text/javascript">
+<div class="content">
+    <nav class="navbar navbar-light sticky-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="https://via.placeholder.com/200x100" alt="Navbar Brand"></a>
+        <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+        <script type="text/javascript">
 		var state = 1;
 		var id = null;
 	
@@ -150,17 +217,27 @@ function removeLoader(){
 			document.getElementById("navContainer").style.transform = "translateX("+ $(window).width() +"px)";
             document.documentElement.style.setProperty('--height',  $(window).height()+'px');
 		})
-		
-	
+
 	$( "#navbarButton" ).click(function(){
-		
+        
+        
 		if (state == 0){
 		
 		anime({
 		  targets: '#navContainer',
 		  translateX: $(window).width() + 5,
 		  easing: 'spring(1, 90, 80, 0)',
-		})
+		});
+        anime({
+		  targets: '#changeColor',
+		  background: '#FFFFFF',
+		  easing: 'easeInOutQuad',
+		});
+        anime({
+		  targets: '#navContainer',
+		  background: '#FFFFFF',
+		  easing: 'easeInOutQuad',
+		});
 		state = 1;
 		}
 		else{
@@ -169,7 +246,17 @@ function removeLoader(){
 		  targets: '#navContainer',
 		  translateX: 0,
 		  easing: 'spring(1, 90, 80, 0)'
-		})
+		});
+        anime({
+		  targets: '#changeColor',
+		  background: '#F9E3D9',
+		  easing: 'easeInOutQuad',
+		});
+        anime({
+		  targets: '#navContainer',
+		  background: '#F9E3D9',
+		  easing: 'easeInOutQuad',
+		});
 		state = 0;
 		}		
 	})
@@ -197,49 +284,135 @@ function removeLoader(){
     });
 
         
-	$(window).resize(function() {
-	
-        anime({
-		  targets: '#coneTop',
-		  translateX: 500,
-		  easing: 'linear',
-		});
-        
+	$(window).resize(function() {     
 	if(state == 1){
-	
+	style="background-color: #F2B79F"
 		anime({
 		  targets: '#navContainer',
 		  translateX: $(window).width() + 5,
 		  easing: 'linear',
-		})
+		});
 		}
 	});
-				
+	$('.navbar-brand').hover(function(){
+        
+        anime({
+		  targets: '#navbarImg',
+		  scaleX: 1.1,
+          scaleY: 1.1,
+		  easing: 'spring(1, 90, 5 ,0)',
+          duration: 100
+		});
+    })
+    $('.navbar-brand').mouseleave(function(){
+        anime({
+		  targets: '#navbarImg',
+		  scaleX: 1,
+          scaleY: 1,
+		  easing: 'spring(1, 80, 10, 10)',
+          duration: 100
+		});
+    })
+            
 	</script> 
-</nav>
-<div class="body-behind">
-    <div id="navContainer">
-        <div class="container-fluid"  style="color: aqua; position: relative" id="collapsibleNavbar"> <span style="background-color: #3A423E; height: 5px"></span>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
-            </ul>
+    </nav>
+    <div class="body-behind">
+        
+        <div id="navContainer">
+            <div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><h1 style="color: #200F87">Our Flavours:</h1> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Chocolate Chip Off the Block <span class="sr-only">(current)</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Punky Road</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Care'aml Dream</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Masterfull Mellon</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Mouthwatering Marshmellow</a> </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<div class="bodyContent"> 
-    
-<div class="creamContainer">   
-    <div id="coneTop">
-    <img src="coneTopAsset 1.svg" style="width: 10%">
+    <div id="imgRotate">
+    <main>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">Punny headline</h1>
+      <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
+      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
     </div>
-    <div id="coneBottom">
-    <img src="coneBottomAsset 2.svg" style="width: 10%">
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
-</div>     
-    
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
-<div id="imgRotate"></div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+    <div class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+  </div>
+</main>
+    </div>
+    </div>
+
 </body>
 </html>
