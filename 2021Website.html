@@ -234,6 +234,7 @@ function removeLoader(){
 			document.getElementById("navContainer").style.transform = "translateX("+ $(window).width() +"px)";
             document.getElementById("containerFlowIn").style.transform = "translateX("+ $(window).width() +"px)";
             document.getElementById("containerFlowIn2").style.transform = "translateX("+ $(window).width() +"px)";
+			document.getElementById("containerFlowIn3").style.transform = "translateX("+ $(window).width() +"px)";
             document.documentElement.style.setProperty('--height',  $(window).height()+'px');
             
 		})
@@ -299,9 +300,10 @@ var activeButton = 1;
         toggle = 1;
 		}		
     }        
-            
+        var oneTS = 1;    
         var currentRotation = 0;
         var direction = 1;
+			
     $(window).scroll(function(){
         if(currentRotation >= 360 || currentRotation <= -360){
             if(direction == 1){
@@ -317,10 +319,22 @@ var activeButton = 1;
         else{
             currentRotation = currentRotation + (direction*(2.5));
         }
-        
+
         document.documentElement.style.setProperty('--rotation',  currentRotation +'deg');
     });
 
+	function oneTimeScroll(value){
+		if(value = 1){
+			anime({
+              targets: '#containerFlowIn3',
+              translateX: 0,
+              easing: 'easeInOutQuad',
+            delay: 200
+		  });			
+		}	
+	}		
+			
+	
         
 	$(window).resize(function() {     
 	if(state == 1){
@@ -363,7 +377,7 @@ var activeButton = 1;
 					<li class="nav-item"> <a class="nav-link" href="#">Punky Road</a> </li>
 					<li class="nav-item"> <a class="nav-link" href="#">Care'aml Dream</a> </li>
 					<li class="nav-item"> <a class="nav-link" href="#">Masterfull Mellon</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="#">Mouthwatering Marshmellow</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="#">Orange Orange</a> </li>
 				</ul>
 			</div>
 		</div>
@@ -380,37 +394,45 @@ var activeButton = 1;
 		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn2">
 			<div class="row">
 				<div class="col-lg-4">
-					<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title>
-						<rect width="100%" height="100%" fill="#777"></rect>
-						<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-					</svg>
+					<img src="coneTopAsset 1.svg" style="height: 140px">
 					<h2>Heading</h2>
 					<p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
 					<p><a class="btn btn-secondary" href="#">View details »</a></p>
 				</div>
 				<!-- /.col-lg-4 -->
 				<div class="col-lg-4">
-					<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title>
-						<rect width="100%" height="100%" fill="#777"></rect>
-						<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-					</svg>
+					<img src="coneTopAsset 2.svg" style="height: 140px">
 					<h2>Heading</h2>
 					<p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
 					<p><a class="btn btn-secondary" href="#">View details »</a></p>
 				</div>
 				<!-- /.col-lg-4 -->
 				<div class="col-lg-4">
-					<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title>
-						<rect width="100%" height="100%" fill="#777"></rect>
-						<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-					</svg>
+					<img src="coneTopAsset 3.svg" style="height: 140px">
 					<h2>Heading</h2>
 					<p>And lastly this, the third column of representative placeholder content.</p>
 					<p><a class="btn btn-secondary" href="#">View details »</a></p>
 				</div>
+				<!-- /.col-lg-4 --> 
+			</div>
+		</div>
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn3">
+			<div class="row">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-4">
+					<img src="coneTopAsset 1.svg" style="height: 140px">
+					<h2>Heading</h2>
+					<p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+					<p><a class="btn btn-secondary" href="#">View details »</a></p>
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<img src="coneTopAsset 2.svg" style="height: 140px">
+					<h2>Heading</h2>
+					<p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+					<p><a class="btn btn-secondary" href="#">View details »</a></p>
+				</div>
+				<div class="col-lg-2"></div>
 				<!-- /.col-lg-4 --> 
 			</div>
 		</div>
