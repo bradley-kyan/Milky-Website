@@ -13,128 +13,136 @@
 <style>
 @media(max-height: 500px) {
 .nav-item {
-    font-size: 18px;
+	font-size: 18px;
 }
 }
 
 @media(min-height: 501px) {
 .nav-item {
-    font-size: min(max(30px), 3.5vh);
+	font-size: min(max(30px), 3.5vh);
 }
 }
 
 @media(max-width: 500px) {
 #navContainer {
-    width: 100vw;
-    padding: 15px;
-    padding-right: 50px;
+	width: 100vw;
+	padding: 15px;
+	padding-right: 50px;
 }
 }
 
 @media(min-width: 501px) {
 #navContainer {
-    width: 80vw;
-    padding: 15px;
-    padding-right: 50px
+	width: 80vw;
+	padding: 15px;
+	padding-right: 50px
 }
 }
 
 @media(min-width: 700px) {
 #navContainer {
-    width: 70vw;
-    padding: 15px;
-    padding-right: 50px
+	width: 70vw;
+	padding: 15px;
+	padding-right: 50px
 }
 }
 
 @media(min-width: 950px) {
 #navContainer {
-    width: 50vw;
-    padding: 15px;
-    padding-right: 50px
+	width: 50vw;
+	padding: 15px;
+	padding-right: 50px
 }
 }
 html {
-    scroll-behavior: auto;
+	scroll-behavior: auto;
 }
 .body {
-    height: 100vw;
-    width: 80vw;
-    background-color: white;
+	height: 100vw;
+	width: 80vw;
+	background-color: white;
 }
 .body-behind {
-    width: 100vw;
-    overflow: hidden;
-    z-index: 5;
-    position: fixed
+	width: 100vw;
+	overflow: hidden;
+	z-index: 5;
+	position: fixed
 }
 #navContainer {
-    background-color: #FFFFFF;
-    z-index: 4;
-    display: inherit;
-    position: fixed;
-    right: 0;
-    top: 100px;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-bottom-color: #F2B79F;
-    border-left-color: #F2B79F;
+	background-color: #FFFFFF;
+	z-index: 4;
+	display: inherit;
+	position: fixed;
+	right: 0;
+	top: 100px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-bottom-color: #F2B79F;
+	border-left-color: #F2B79F;
 }
 #navbarImg {
-    width: 90px;
+	width: 90px;
 }
-body:before {
-    content: "";
-    z-index: -1;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: url("sprinkle2.svg") 0 0 repeat;
-    background-size: 2%;
-    position: absolute;
-    transform: rotate(var(--rotation));
+#background {
+	overflow: hidden;
+	position: absolute;
+	z-index: -100;
+}
+#background:before {
+	content: "";
+	width: 200%;
+	height: 200%;
+	top: -50%;
+	left: -50%;
+	background-image: url("sprinkle2.svg");
+	background-repeat: repeat;
+	background-size: 2%;
+	position: absolute;
+	transform: rotate(var(--rotation));
 }
 .bodyContent {
-    background-color: white;
-    min-height: var(--height);
-    width: 90vw;
-    z-index: 1;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    position: absolute;
+	background-color: white;
+	min-height: var(--height);
+	width: 90vw;
+	z-index: 1;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	position: absolute;
 }
 #loadingDiv {
-    height: var(--height);
-    width: 100vw;
-    postion: absolute;
-    z-index: 100;
-    top: 0;
-    overflow: hidden;
-    background-color: #F2B79F;
-    display: flex;
-    justify-content: center;
+	height: var(--height);
+	width: 100vw;
+	postion: absolute;
+	z-index: 100;
+	top: 0;
+	overflow: hidden;
+	background-color: #F2B79F;
+	display: flex;
+	justify-content: center;
 }
 .creamContainer {
-    align-self: center;
-    height: 25vw;
-    padding-top: 25vw;
-    z-index: 500;
+	align-self: center;
+	height: 25vw;
+	padding-top: 25vw;
+	z-index: 500;
 }
 .nav-link {
-    color: #6095CF;
+	color: #6095CF;
 }
 .flex-equal > * {
-    flex: 1;
+	flex: 1;
 }
 
 @media (min-width: 768px) {
 .flex-md-equal > * {
-    flex: 1;
+	flex: 1;
 }
 }
+	.content-bg{
+		background-color: rgba(255,255,255,0.8);
+	}
 :root {
 --rotation: 0deg;
 --height;
@@ -143,7 +151,8 @@ body:before {
 </style>
 </head>
 <body>
-<script type="text/javascript">
+<div id="background"> 
+	<script type="text/javascript">
     $('body').append('<div id="loadingDiv"><div class="loader"> <div class="creamContainer">   <div id="coneTop"><img src="coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
 
     $(window).on('load', function(){
@@ -209,11 +218,15 @@ function removeLoader(){
             delay: 200
 		  });
         
+		
   });  
-}</script>
-<nav class="navbar navbar-light sticky-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="logo.svg" alt="Navbar Brand"></a>
-    <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
-    <script type="text/javascript">
+}
+	
+	
+</script>
+	<nav class="navbar navbar-light sticky-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="logo.svg" alt="Navbar Brand"></a>
+		<button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+		<script type="text/javascript">
 		var state = 1;
 		var id = null;
 	
@@ -249,7 +262,7 @@ var activeButton = 1;
 		
 		anime({
 		  targets: '#navContainer',
-		  translateX: $(window).width() + 15,
+		  translateX: $(window).width() + 25,
 		  easing: 'spring(1, 90, 80, 0)',
 		});
         anime({
@@ -314,7 +327,7 @@ var activeButton = 1;
 	style="background-color: #F2B79F"
 		anime({
 		  targets: '#navContainer',
-		  translateX: $(window).width() + 5,
+		  translateX: $(window).width() + 25,
 		  easing: 'linear',
 		});
 		}
@@ -329,77 +342,79 @@ var activeButton = 1;
           duration: 100
 		});
     })
+			
     $('.navbar-brand').mouseleave(function(){
         anime({
 		  targets: '#navbarImg',
 		  scaleX: 1,
           scaleY: 1,
-		  easing: 'spring(1, 80, 10, 10)',
+		  easing: 'spring(1, 90, 5 ,0)',
           duration: 100
 		});
     })    
 	</script>
-    <div id="navContainer">
-        <div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <h1 style="color: #200F87">Our Flavours:</h1>
-                </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Chocolate Chip Off the Block <span class="sr-only">(current)</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Punky Road</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Care'aml Dream</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Masterfull Mellon</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Mouthwatering Marshmellow</a> </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<main class="main">
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="containerFlowIn">
-        <div class="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 class="display-4 fw-normal">Ice Cream <span style="border-bottom: 2px solid black;">Delivered</span> in a New Way</h1>
-            <p class="lead fw-normal">From our shop to your door, enjoy premium Belguim ice cream without restraint</p>
-            <a class="btn btn-outline-secondary" href="#">Learn More</a> </div>
-        <div class="product-device shadow-sm d-none d-md-block"></div>
-        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-    </div>
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="containerFlowIn2">
-        <div class="row">
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#777"></rect>
-                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-                </svg>
-                <h2>Heading</h2>
-                <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                <p><a class="btn btn-secondary" href="#">View details »</a></p>
-            </div>
-            <!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#777"></rect>
-                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-                </svg>
-                <h2>Heading</h2>
-                <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-                <p><a class="btn btn-secondary" href="#">View details »</a></p>
-            </div>
-            <!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#777"></rect>
-                    <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-                </svg>
-                <h2>Heading</h2>
-                <p>And lastly this, the third column of representative placeholder content.</p>
-                <p><a class="btn btn-secondary" href="#">View details »</a></p>
-            </div>
-            <!-- /.col-lg-4 --> 
-        </div>
-    </div>
-</main>
+		<div id="navContainer">
+			<div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<h1 style="color: #200F87">Our Flavours:</h1>
+					</li>
+					<li class="nav-item"> <a class="nav-link" href="#">Chocolate Chip Off the Block</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="#">Punky Road</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="#">Care'aml Dream</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="#">Masterfull Mellon</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="#">Mouthwatering Marshmellow</a> </li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="main">
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn">
+			<div class="col-md-5 p-lg-5 mx-auto my-5">
+				<h1 class="display-4 fw-normal">Ice Cream <span style="border-bottom: 2px solid black;">Delivered</span> in a New Way</h1>
+				<p class="lead fw-normal">From our shop to your door, enjoy premium Belguim ice cream without restraint</p>
+				<a class="btn btn-outline-secondary" href="#">Learn More</a> </div>
+			<div class="product-device shadow-sm d-none d-md-block"></div>
+			<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+		</div>
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn2">
+			<div class="row">
+				<div class="col-lg-4">
+					<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+						<title>Placeholder</title>
+						<rect width="100%" height="100%" fill="#777"></rect>
+						<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+					</svg>
+					<h2>Heading</h2>
+					<p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+					<p><a class="btn btn-secondary" href="#">View details »</a></p>
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+						<title>Placeholder</title>
+						<rect width="100%" height="100%" fill="#777"></rect>
+						<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+					</svg>
+					<h2>Heading</h2>
+					<p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+					<p><a class="btn btn-secondary" href="#">View details »</a></p>
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+						<title>Placeholder</title>
+						<rect width="100%" height="100%" fill="#777"></rect>
+						<text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+					</svg>
+					<h2>Heading</h2>
+					<p>And lastly this, the third column of representative placeholder content.</p>
+					<p><a class="btn btn-secondary" href="#">View details »</a></p>
+				</div>
+				<!-- /.col-lg-4 --> 
+			</div>
+		</div>
+	</main>
+</div>
 </body>
 </html>
