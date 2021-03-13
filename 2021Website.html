@@ -100,7 +100,7 @@ html {
     left: -50%;
     background-image: url("sprinkle2.svg");
     background-repeat: repeat;
-    background-size: 2%;
+    background-size: 2.5%;
     position: absolute;
     transform: rotate(var(--rotation));
 }
@@ -147,6 +147,21 @@ html {
 .content-bg {
     background-color: rgba(255,255,255,0.8);
 }
+.main {
+    padding-top: 100px;
+}
+.nav-trans {
+    transition: all .25s;
+}
+.nav-trans:hover {
+    transform: translateX(10px);
+}
+.nav-trans:not(:hover) {
+    transform: translateX(0px);
+}
+.trans {
+    transition: all .25s;
+}
 :root {
 --rotation: 0deg;
 --height;
@@ -159,6 +174,18 @@ html {
     <script type="text/javascript">
     $('body').append('<div id="loadingDiv"><div class="loader"> <div class="creamContainer">   <div id="coneTop"><img src="coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
 
+    $(document).ready(function(){
+        $('.raise-trans').mouseover(function(){
+            $(this).find(".trans").css('transform', 'translateY(-15px)');
+        });
+        $('.raise-trans').mouseleave(function(){
+            
+            $(this).find(".trans").css('transform', 'translateY(0px)');
+        });
+
+        
+    })    
+        
     $(window).on('load', function(){
      window.scrollTo(0, 0);
         $('.navbar').hide();
@@ -219,20 +246,35 @@ function removeLoader(){
               targets: '#containerFlowIn2',
               translateX: 0,
               easing: 'easeInOutQuad',
-            delay: 200
+              delay: 200
 		  });
         anime({
               targets: '#containerFlowIn3',
               translateX: 0,
               easing: 'easeInOutQuad',
-            delay: 400
+              delay: 400
 		
-  });  
-})}
-	
-	
+        });
+        anime({
+              targets: '#delText',
+              borderBottomColor: '#000000',
+              easing: 'easeInOutQuad',
+            duration: 350,
+              delay: 2050
+		
+        });
+         anime({
+              targets: '#headJump',
+              translateY: -25,
+              easing: 'easeInOutQuad',
+              duration: 500,
+              direction: 'alternate', 
+              delay: 1000
+		
+        });
+    })}	
 </script>
-    <nav class="navbar navbar-light sticky-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="logo.svg" alt="Navbar Brand"></a>
+    <nav class="navbar navbar-light fixed-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="logo.svg" alt="Milky Logo"></a>
         <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
         <script type="text/javascript">
 		var state = 1;
@@ -334,8 +376,7 @@ var activeButton = 1;
         
         document.documentElement.style.setProperty('--rotation',  currentRotation +'deg');
     });	
-			
-	
+		
         
 	$(window).resize(function() {     
 	if(state == 1){
@@ -374,11 +415,11 @@ var activeButton = 1;
                     <li class="nav-item">
                         <h1 style="color: #200F87">Our Flavours:</h1>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Punky Road</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Chocolate Chip Off the Block</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Orange Orange</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Masterfull Mellon</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Care'amel Dream</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#">Punky Road</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#">Chocolate Chip Off the Block</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#">Orange Orange</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#">Masterful Mellon</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#">Care'amel Dream</a> </li>
                 </ul>
             </div>
         </div>
@@ -386,7 +427,7 @@ var activeButton = 1;
     <main class="main">
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn">
             <div class="col-md-5 p-lg-5 mx-auto my-5">
-                <h1 class="display-4 fw-normal">Ice Cream <span style="border-bottom: 2px solid black;">Delivered</span> in a New Way</h1>
+                <h1 class="display-4 fw-normal" id="headJump">Ice Cream <span id="delText" style="border-bottom: 2px solid #ffffff">Delivered</span> in a New Way</h1>
                 <p class="lead fw-normal">From our shop to your door, enjoy premium Belguim ice cream without restraint</p>
                 <a class="btn btn-outline-secondary" href="#">Learn More</a> </div>
             <div class="product-device shadow-sm d-none d-md-block"></div>
@@ -394,42 +435,37 @@ var activeButton = 1;
         </div>
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn2">
             <div class="row">
-                <div class="col-lg-4"> <img src="coneTopAsset 1.svg" style="height: 140px">
-                    <h2>Heading</h2>
-                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="coneTopAsset 1.svg" style="height: 140px; margin: 10px" alt="Punky Road">
+                    <h2 class="head-underline">Punky Road</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
                     <p><a class="btn btn-secondary" href="#">View details »</a></p>
                 </div>
-                <!-- /.col-lg-4 -->
-                <div class="col-lg-4"> <img src="coneTopAsset 2.svg" style="height: 140px">
-                    <h2>Heading</h2>
-                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="coneTopAsset 2.svg" style="height: 140px; margin: 10px" alt="Chocolate Chip Off the Block">
+                    <h2 class="head-underline">Chocolate Chip Off the Block</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
                     <p><a class="btn btn-secondary" href="#">View details »</a></p>
                 </div>
-                <!-- /.col-lg-4 -->
-                <div class="col-lg-4"> <img src="coneTopAsset 3.svg" style="height: 140px">
-                    <h2>Heading</h2>
-                    <p>And lastly this, the third column of representative placeholder content.</p>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="coneTopAsset 3.svg" style="height: 140px; margin: 10px" alt="Orange Orange">
+                    <h2 class="head-underline">Orange Orange</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
                     <p><a class="btn btn-secondary" href="#">View details »</a></p>
                 </div>
-                <!-- /.col-lg-4 --> 
             </div>
         </div>
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn3">
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-4"> <img src="coneTopAsset 4.svg" style="height: 140px">
-                    <h2>Heading</h2>
-                    <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="coneTopAsset 4.svg" style="height: 140px; margin: 10px" alt="Masterful Orange">
+                    <h2 class="head-underline">Masterful Orange</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
                     <p><a class="btn btn-secondary" href="#">View details »</a></p>
                 </div>
-                <!-- /.col-lg-4 -->
-                <div class="col-lg-4"> <img src="coneTopAsset 5.svg" style="height: 140px">
-                    <h2>Heading</h2>
-                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="coneTopAsset 5.svg" style="height: 140px; margin: 10px" alt="Care'amel Dream">
+                    <h2 class="head-underline">Care'amel Dream</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
                     <p><a class="btn btn-secondary" href="#">View details »</a></p>
                 </div>
                 <div class="col-lg-2"></div>
-                <!-- /.col-lg-4 --> 
             </div>
         </div>
     </main>
