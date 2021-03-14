@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Milky Ice Creams</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="logo.svg">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script src="script/anime-3.2.1/anime.min.js"></script> 
+<script src="script/jquery.visible.min.js"></script>
+<style>
+@media(max-height: 500px) {
+.nav-item {
+    font-size: 18px;
+}
+}
+
+@media(min-height: 501px) {
+.nav-item {
+    font-size: min(max(30px), 3.5vh);
+}
+}
+
+@media(max-width: 500px) {
+#navContainer {
+    width: 100vw;
+    padding: 15px;
+    padding-right: 50px;
+}
+}
+
+@media(min-width: 501px) {
+#navContainer {
+    width: 80vw;
+    padding: 15px;
+    padding-right: 50px
+}
+}
+
+@media(min-width: 700px) {
+#navContainer {
+    width: 70vw;
+    padding: 15px;
+    padding-right: 50px
+}
+}
+
+@media(min-width: 950px) {
+#navContainer {
+    width: 50vw;
+    padding: 15px;
+    padding-right: 50px
+}
+}
+html {
+    scroll-behavior: auto;
+}
+.body {
+    height: 100vw;
+    width: 80vw;
+    background-color: white;
+}
+.body-behind {
+    width: 100vw;
+    overflow: hidden;
+    z-index: 5;
+    position: fixed
+}
+#navContainer {
+    background-color: #FFFFFF;
+    z-index: 4;
+    display: inherit;
+    position: fixed;
+    right: 0;
+    top: 100px;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-color: #F2B79F;
+    border-left-color: #F2B79F;
+}
+#navbarImg {
+    width: 90px;
+}
+#background {
+    overflow: hidden;
+    position: absolute;
+    z-index: -100;
+}
+#background:before {
+    content: "";
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: url("assets/sprinkle2.svg");
+    background-repeat: repeat;
+    background-size: 2.5%;
+    position: fixed;
+    transform: rotate(var(--rotation));
+}
+.bodyContent {
+    background-color: white;
+    min-height: var(--height);
+    width: 90vw;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+#loadingDiv {
+    height: var(--height);
+    width: 100vw;
+    postion: absolute;
+    z-index: 100;
+    top: 0;
+    overflow: hidden;
+    background-color: #F2B79F;
+    display: flex;
+    justify-content: center;
+}
+.creamContainer {
+    align-self: center;
+    height: 25vw;
+    padding-top: 25vw;
+    z-index: 500;
+}
+.nav-link {
+    color: #6095CF;
+}
+.flex-equal > * {
+    flex: 1;
+}
+
+@media (min-width: 768px) {
+.flex-md-equal > * {
+    flex: 1;
+}
+}
+.content-bg {
+    background-color: rgba(255,255,255,0.8);
+}
+.main {
+    padding-top: 100px;
+}
+.nav-trans {
+    transition: all .25s;
+}
+.nav-trans:hover {
+    transform: translateX(10px);
+}
+.nav-trans:not(:hover) {
+    transform: translateX(0px);
+}
+.trans {
+    transition: all .25s;
+}
+.bg-custom {
+    background-color: rgba(0,0,0,0.92);
+}
+.button-fixed {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+    border-radius: 4px;
+}
+.fas {
+    cursor: pointer;
+    font-size: 24px;
+}
+.spinner-pos {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.parent {
+    width: 100%;
+}
+.scroll-on-view {
+    transition: all 1.5s;
+}
+.btn-secondary {
+    background-color: #F2B79F;
+    border-color: #F4937D
+}
+.btn-secondary:hover {
+    background-color: #FD6B61;
+    border-color: #F4937D
+}
+html {
+    scroll-behavior: smooth
+}
+:root {
+--rotation: 0deg;
+--height;
+--width;
+}
+</style>
+</head>
+<body>
+<div id="background"> 
+    <script type="text/javascript">
+    /* The loading screen for the website */
+    $('body').append('<div id="loadingDiv"> <div class="spinner-pos spinner-border text-white"> </div><div class="loader">  <div class="creamContainer">   <div id="coneTop"><img src="assets/coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="assets/coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
+
+    /* Functions which depend on load on page load */
+    $(document).ready(function() {
+    $('.navbar').hide();
+    $('.main').hide();
+
+    setTimeout(delayState, 100); // Delays the scroll-on body function which prevents activation on a page refresh
+    /* Hover animation for pictures when parent container is hovered */
+    $('.raise-trans').mouseover(function() { // Gets the class 'raise-trans'
+        $(this).find(".trans").css('transform', 'translateY(-15px)'); // Finds the child element of the 'raise-trans' class 'trans' and changes css styling
+    });
+    $('.raise-trans').mouseleave(function() {
+        $(this).find(".trans").css('transform', 'translateY(0px)');
+    });
+
+    $('.raise-grow-trans').mouseover(function() {
+        $(this).find(".trans").css({
+            transform: 'scale(1.1) translateY(-25px)'
+        });
+    });
+    $('.raise-grow-trans').mouseleave(function() {
+        $(this).find(".trans").css({
+            transform: 'scale(1) translateY(0px)'
+        });
+    });
+
+    $('.grow-trans').mouseover(function() {
+        $(this).find(".trans").css('transform', 'scale(1.2)');
+    });
+    $('.grow-trans').mouseleave(function() {
+
+        $(this).find(".trans").css('transform', 'scale(1)');
+    });
+
+
+    $('#cookies-notify-button').click(function() {
+        $('#cookies-notify-container').fadeOut(700, function() {
+            $("#cookies-notify-container").remove();
+        });
+    });
+})
+
+/* Animation for the ice cream and background color pulse on page loading screen */    
+    
+$(window).on('load', function() {
+
+    anime({
+        targets: '.creamContainer',
+        translateX: [{
+                value: 100,
+                duration: 1000,
+                delay: 500
+            },
+            {
+                value: 0,
+                duration: 1000,
+                delay: 500
+            },
+            {
+                value: 0,
+                duration: 1000,
+                delay: 500
+            }
+        ],
+        translateY: [{
+                value: -40,
+                duration: 500
+            },
+            {
+                value: 40,
+                duration: 500,
+                delay: 1000
+            },
+            {
+                value: -40,
+                duration: 500,
+                delay: 1000
+            }
+        ],
+        scaleX: [{
+                value: 1.5,
+                duration: 100,
+                delay: 500,
+                easing: 'easeOutExpo'
+            },
+            {
+                value: 1,
+                duration: 900
+            },
+            {
+                value: 1.5,
+                duration: 100,
+                delay: 500,
+                easing: 'easeOutExpo'
+            },
+            {
+                value: 1,
+                duration: 900
+            }
+        ],
+        scaleY: [{
+                value: [1.15, 1],
+                duration: 500
+            },
+            {
+                value: 1.25,
+                duration: 50,
+                delay: 1000,
+                easing: 'easeOutExpo'
+            },
+            {
+                value: 1,
+                duration: 450
+            },
+            {
+                value: 1.1,
+                duration: 50,
+                delay: 1000,
+                easing: 'easeOutExpo'
+            },
+            {
+                value: 1,
+                duration: 450
+            }
+        ],
+
+        duration: 3000,
+        easing: 'easeOutElastic(1, .8)',
+        loop: true
+    });
+    anime.timeline({
+            easing: 'easeInOutQuad',
+            loop: true
+        })
+        .add({
+            targets: '#loadingDiv',
+            background: '#FFFFFF'
+        }, 100)
+        .add({
+            targets: '#loadingDiv',
+            background: '#F2B79F'
+        }, 500)
+    setTimeout(removeLoader, 3700);
+});
+
+
+/* Code to be run which is dependant on/afer the hiding the loading screen, incl. animations which will play immediatly or with sight delay */
+function removeLoader() {
+    $("#loadingDiv").fadeOut(500, function() {
+        $("#loadingDiv").remove();
+        $('.navbar').show();
+        $('.main').show();
+        
+        /* >>Animations appear in order of play<< */
+        
+        anime({ // First container
+            targets: '#containerFlowIn',
+            translateX: 0,
+            easing: 'easeInOutQuad',
+        });
+        anime({ // Second container
+            targets: '#containerFlowIn2',
+            translateX: 0,
+            easing: 'easeInOutQuad',
+            delay: 200
+        });
+        anime({ // Third container
+            targets: '#containerFlowIn3',
+            translateX: 0,
+            easing: 'easeInOutQuad',
+            delay: 400
+
+        });
+        anime({ // Animation for greeting text
+            targets: '#headJump',
+            translateY: -25,
+            easing: 'easeInOutQuad',
+            duration: 500,
+            direction: 'alternate',
+            delay: 1000
+
+        });
+        anime({ // 'Delivered' text span change animation
+            targets: '#delText',
+            borderBottomColor: '#000000',
+            easing: 'easeInOutQuad',
+            duration: 350,
+            delay: 2050
+
+        });
+
+        /* Sets the css transform locations of the scroll-in container off screen */
+        
+        document.getElementById("002").style.transform = "translateX(" + $(window).width() + "px)";
+        document.getElementById("004").style.transform = "translateX(" + $(window).width() + "px)";
+        document.getElementById("006").style.transform = "translateX(" + $(window).width() + "px)";
+        document.getElementById("008").style.transform = "translateX(" + $(window).width() + "px)";
+        document.getElementById("010").style.transform = "translateX(" + $(window).width() + "px)";
+        document.getElementById("012").style.transform = "translateX(" + $(window).width() + "px)";
+    })
+}
+
+var state = 1;
+var id = null;
+
+$(document).ready(function() {
+    
+    /* Sets the placement of the first 3 containers + hidden scroll-in navbar off screen & sets global css variables */
+    
+    document.getElementById("navContainer").style.transform = "translateX(" + $(window).width() + "px)";
+    document.getElementById("containerFlowIn").style.transform = "translateX(" + $(window).width() + "px)";
+    document.getElementById("containerFlowIn2").style.transform = "translateX(" + $(window).width() + "px)";
+    document.getElementById("containerFlowIn3").style.transform = "translateX(" + $(window).width() + "px)";
+    document.documentElement.style.setProperty('--height', $(window).height() + 'px');
+    document.documentElement.style.setProperty('--width', $(window).width() + 'px');
+
+    /* Used to instantly set the position of the scroll-in body containers when a linked button is pressed. This allows the content to be visible when the user clicks on the button, and also prevents browser scroll errors */
+    
+    $('.btn-detail').click(function() {
+        $('.scroll-on-view').css('transition', 'all 0s');
+        $('#002').css('transform', 'translateX(0px)');
+        $('#004').css('transform', 'translateX(0px)');
+        $('#006').css('transform', 'translateX(0px)');
+        $('#008').css('transform', 'translateX(0px)');
+        $('#010').css('transform', 'translateX(0px)');
+        $('#012').css('transform', 'translateX(0px)');
+    });
+    $('.nav-item').click(function() {
+        $('.scroll-on-view').css('transition', 'all 0s');
+        $('#002').css('transform', 'translateX(0px)');
+        $('#004').css('transform', 'translateX(0px)');
+        $('#006').css('transform', 'translateX(0px)');
+        $('#008').css('transform', 'translateX(0px)');
+        $('#010').css('transform', 'translateX(0px)');
+        $('#012').css('transform', 'translateX(0px)');
+    });
+    
+    /* Simple hover animation on navbar-brand */
+    
+    $('.navbar-brand').hover(function() {
+
+        anime({
+            targets: '#navbarImg',
+            scaleX: 1.1,
+            scaleY: 1.1,
+            easing: 'spring(1, 90, 5 ,0)',
+            duration: 100
+        });
+    })
+
+    $('.navbar-brand').mouseleave(function() {
+        anime({
+            targets: '#navbarImg',
+            scaleX: 1,
+            scaleY: 1,
+            easing: 'spring(1, 90, 5 ,0)',
+            duration: 100
+        });
+    }) 
+
+    /* Function used to check if the collapsing navbar is collapsed. If collapsed it will open, else will close. Bastardisation of original intended function which would have closed navbar if the user clicked outside of the body, now closes when the user clicks on the navbar-logo */
+    
+    $("#navbarButton").click(function() {
+        navToggle(activeButton);
+        if (activeButton == 1) {
+            activeButton = 0;
+        } else {
+            activeButton = 1;
+        }
+    })
+    $('#navbarImg').click(function() {
+        if (state == 0) {
+            navToggle(0);
+            activeButton = 1;
+        }
+    })    
+})
+
+var activeButton = 1;
+
+/* Opens/closes the navbar according to the input parameter. Controls animations regarding close/open */    
+    
+function navToggle(toggle) {
+
+    if (state == 0 && toggle == 0) {// Close container
+
+        anime({ 
+            targets: '#navContainer',
+            translateX: $(window).width() + 25, // Transforms offscreen
+            easing: 'spring(1, 90, 80, 0)',
+        });
+        anime({ // Changes color of the navbar
+            targets: '#changeColor',
+            background: '#FFFFFF',
+            easing: 'easeInOutQuad',
+        });
+        anime({ // Changes color of colapsed navbar
+            targets: '#navContainer',
+            background: '#FFFFFF',
+            easing: 'easeInOutQuad',
+        });
+        state = 1;
+        toggle = 0;
+    } else if (state == 1 && toggle == 1) {// Open container
+
+        anime({
+            targets: '#navContainer', // Transforms onscreen
+            translateX: 0,
+            easing: 'spring(1, 90, 80, 0)'
+        });
+        anime({ // Changes color of the navbar
+            targets: '#changeColor',
+            background: '#F9E3D9',
+            easing: 'easeInOutQuad',
+        });
+        anime({ // Changes color of colapsed navbar
+            targets: '#navContainer',
+            background: '#F9E3D9',
+            easing: 'easeInOutQuad',
+        });
+        state = 0;
+        toggle = 1;
+    }
+}
+var currentRotation = 0;
+var direction = 1;
+
+function delayState() { // Switches state values from delayed $('document').ready function
+    state1 = 1;
+    state2 = 1;
+    state3 = 1;
+    state4 = 1;
+    state5 = 1;
+    state6 = 1;
+}
+
+var state1 = 0;
+var state2 = 0;
+var state3 = 0;
+var state4 = 0;
+var state5 = 0;
+var state6 = 0;
+
+/* Function used to check if the scroll-in container is positioned on screen through jquery.visible.min.js script*/    
+$(window).scroll(function() {
+
+    if ($('#001').visible(true) && state1 == 1) {
+        state1 = 0;
+        $('#002').css('transform', 'translateX(0px)');
+    }
+    if ($('#003').visible(true) && state2 == 1) {
+        state2 = 0;
+        $('#004').css('transform', 'translateX(0px)');
+    }
+    if ($('#005').visible(true) && state3 == 1) {
+        state3 = 0;
+        $('#006').css('transform', 'translateX(0px)');
+    }
+    if ($('#007').visible(true) && state4 == 1) {
+        state4 = 0;
+        $('#008').css('transform', 'translateX(0px)');
+    }
+    if ($('#009').visible(true) && state5 == 1) {
+        state5 = 0;
+        $('#010').css('transform', 'translateX(0px)');
+    }
+    if ($('#011').visible(true) && state6 == 1) {
+        state6 = 0;
+        $('#012').css('transform', 'translateX(0px)');
+    };
+
+/* Rotates the background by updating the global css variable of --roatation */    
+    
+    if (currentRotation >= 360 || currentRotation <= -360) { // Sets --rotation back to 0deg when the current rotation value is 360deg
+        if (direction == 1) {
+            direction = -1; // Inverses the direction to add variation => Positive/negative value switcher
+            currentRotation = 0;
+        } else {
+            currentRotation = 0;
+            direction = 1;
+        }
+
+    } else {
+        currentRotation = currentRotation + (direction * (2.5));
+    }
+
+    if (state == 0) { // Function makes navbar collapse if the window is scrolled
+        navToggle(0);
+        activeButton = 1;
+    }
+
+    document.documentElement.style.setProperty('--rotation', currentRotation + 'deg'); // Sets the --rotation variable
+});
+
+/* Makes sure if navbar is collapsed, will remain offscreen when browser/window is resized */
+    
+$(window).resize(function() {
+    if (state == 1) {
+        style = "background-color: #F2B79F"
+        anime({
+            targets: '#navContainer',
+            translateX: $(window).width() + 25,
+            easing: 'linear',
+        });
+    }
+});     
+</script>
+    <nav class="navbar navbar-light fixed-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="assets/logo.svg" alt="Milky Logo"></a>
+        <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+        <div id="navContainer">
+            <div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <h1 style="color: #200F87">Our Flavours</h1>
+                    </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#001">Punky Road</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#003">Chocolate Chip Off the Block</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#005">Orange Orange</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#007">Masterful Mellon</a> </li>
+                    <li class="nav-item nav-trans"> <a class="nav-link" href="#009">Care'amel Dream</a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn">
+            <div class="col-md-5 p-lg-5 mx-auto my-5">
+                <h1 class="display-4 fw-normal" id="headJump">Ice Cream <span id="delText" style="border-bottom: 2px solid #ffffff">Delivered</span> in a New Way</h1>
+                <p class="lead fw-normal">From our shop to your door, enjoy premium Belguim ice cream without restraint</p>
+            </div>
+            <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        </div>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn2">
+            <div class="row">
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 1.svg" style="height: 140px; margin: 10px" alt="Punky Road">
+                    <h2 class="head-underline">Punky Road</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+                    <p><a class="btn btn-secondary btn-detail" href="#001">View details »</a></p>
+                </div>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 2.svg" style="height: 140px; margin: 10px" alt="Chocolate Chip Off the Block">
+                    <h2 class="head-underline">Chocolate Chip Off the Block</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+                    <p><a class="btn btn-secondary btn-detail" href="#003">View details »</a></p>
+                </div>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 3.svg" style="height: 140px; margin: 10px" alt="Orange Orange">
+                    <h2 class="head-underline">Orange Orange</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+                    <p><a class="btn btn-secondary btn-detail" href="#005">View details »</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn3">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 4.svg" style="height: 140px; margin: 10px" alt="Masterful Orange">
+                    <h2 class="head-underline">Masterful Orange</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+                    <p><a class="btn btn-secondary btn-detail" href="#007">View details »</a></p>
+                </div>
+                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 5.svg" style="height: 140px; margin: 10px" alt="Care'amel Dream">
+                    <h2 class="head-underline">Care'amel Dream</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+                    <p><a class="btn btn-secondary btn-detail" href="#009">View details »</a></p>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
+        <div id="011">
+            <div id="012" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg">
+                <h1 style="font-size: 50px"><span style="border-bottom: 2px solid">Our Flavours</span></h1>
+            </div>
+        </div>
+        <div class="parent" id="001">
+            <div id="002" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+                <h2>Punky Road</h2>
+                <br>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6">
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+                            
+                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+                    </div>
+                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 1.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+                </div>
+            </div>
+        </div>
+        <div class="parent" id="003">
+            <div id="004" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+                <h2>Chocolate Chip Off the Block</h2>
+                <br>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6">
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+                            
+                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+                    </div>
+                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 2.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+                </div>
+            </div>
+        </div>
+        <div class="parent" id="005">
+            <div id="006" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+                <h2>Orange Orange</h2>
+                <br>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6">
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+                            
+                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+                    </div>
+                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 3.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+                </div>
+            </div>
+        </div>
+        <div class="parent" id="007">
+            <div id="008" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+                <h2>Masterful Mellon</h2>
+                <br>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6">
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+                            
+                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+                    </div>
+                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 4.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+                </div>
+            </div>
+        </div>
+        <div class="parent" id="009">
+            <div id="010" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+                <h2>Care'amel Dream</h2>
+                <br>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6">
+                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+                            
+                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+                    </div>
+                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 5.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+                </div>
+            </div>
+        </div>
+        <div id="cookies-notify-container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 button-fixed">
+                    <div class="p-3 pb-4 text-white" style="background-color: rgba(0,0,0,0.6)">
+                        <div class="row">
+                            <div class="col-10">
+                                <h2>Allow Cookies</h2>
+                            </div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <button id="cookies-notify-button" type="button" class="btn btn-danger w-100">Accept Cookies</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="position-relative text-muted text-center blockquote-footer" style="z-index: 15">
+            <div class="container-fluid" style="background-color: #F2B79F; border-top: 5px solid #EB745F">
+                <div class="container" style="padding: 15px">
+                    <p> <a href="#">Back to top</a> </p>
+                    <p style="color: white"> © 2021 Milky. All rights reserved. Created by Kyan Bradley </p>
+                </div>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
