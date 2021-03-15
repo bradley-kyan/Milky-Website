@@ -193,6 +193,12 @@ html {
     background-color: #FD6B61;
     border-color: #F4937D
 }
+	.milkyLoad{
+		align-self: center;
+    	padding-top: 50px;
+		width: 220%;
+    	margin: auto;
+	}
 html {
     scroll-behavior: smooth
 }
@@ -207,7 +213,7 @@ html {
 <div id="background"> 
     <script type="text/javascript">
     /* The loading screen for the website */
-    $('body').append('<div id="loadingDiv"> <div class="spinner-pos spinner-border text-white"> </div><div class="loader">  <div class="creamContainer">   <div id="coneTop"><img src="assets/coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="assets/coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
+    $('body').append('<div id="loadingDiv"> <div class="spinner-pos spinner-border text-white"> </div><div class="loader"><div class="milkyLoad container"> <img src="assets/logo.svg" style="width: 30%"> </div>  <div class="creamContainer">   <div id="coneTop"><img src="assets/coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="assets/coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
 
     /* Functions which depend on load on page load */
     $(document).ready(function() {
