@@ -14,190 +14,190 @@
 <style>
 @media(max-height: 500px) {
 .nav-item {
-    font-size: 18px;
+	font-size: 18px;
 }
 }
 
 @media(min-height: 501px) {
 .nav-item {
-    font-size: min(max(30px), 3.5vh);
+	font-size: min(max(30px), 3.5vh);
 }
 }
 
 @media(max-width: 500px) {
 #navContainer {
-    width: 100vw;
-    padding: 15px;
-    padding-right: 50px;
+	width: 100vw;
+	padding: 15px;
+	padding-right: 50px;
 }
 }
 
 @media(min-width: 501px) {
 #navContainer {
-    width: 80vw;
-    padding: 15px;
-    padding-right: 50px
+	width: 80vw;
+	padding: 15px;
+	padding-right: 50px
 }
 }
 
 @media(min-width: 700px) {
 #navContainer {
-    width: 70vw;
-    padding: 15px;
-    padding-right: 50px
+	width: 70vw;
+	padding: 15px;
+	padding-right: 50px
 }
 }
 
 @media(min-width: 950px) {
 #navContainer {
-    width: 50vw;
-    padding: 15px;
-    padding-right: 50px
+	width: 50vw;
+	padding: 15px;
+	padding-right: 50px
 }
 }
 .body {
-    height: 100vw;
-    width: 80vw;
-    background-color: white;
+	height: 100vw;
+	width: 80vw;
+	background-color: white;
 }
 .body-behind {
-    width: 100vw;
-    overflow: hidden;
-    z-index: 5;
-    position: fixed
+	width: 100vw;
+	overflow: hidden;
+	z-index: 5;
+	position: fixed
 }
 #navContainer {
-    background-color: #FFFFFF;
-    z-index: 4;
-    display: inherit;
-    position: fixed;
-    right: 0;
-    top: 100px;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-bottom-color: #F2B79F;
-    border-left-color: #F2B79F;
+	background-color: #FFFFFF;
+	z-index: 4;
+	display: inherit;
+	position: fixed;
+	right: 0;
+	top: 100px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-bottom-color: #F2B79F;
+	border-left-color: #F2B79F;
 }
 #navbarImg {
-    width: 90px;
+	width: 90px;
 }
 #background {
-    overflow: hidden;
-    position: absolute;
-    z-index: -100;
+	overflow: hidden;
+	position: absolute;
+	z-index: -100;
 }
 #background:before {
-    content: "";
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background-image: url("assets/sprinkle2.svg");
-    background-repeat: repeat;
-    background-size: 2.5%;
-    position: fixed;
-    transform: rotate(var(--rotation));
+	content: "";
+	width: 200%;
+	height: 200%;
+	top: -50%;
+	left: -50%;
+	background-image: url("assets/sprinkle2.svg");
+	background-repeat: repeat;
+	background-size: 2.5%;
+	position: fixed;
+	transform: rotate(var(--rotation));
 }
 .bodyContent {
-    background-color: white;
-    min-height: var(--height);
-    width: 90vw;
-    z-index: 1;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    position: absolute;
+	background-color: white;
+	min-height: var(--height);
+	width: 90vw;
+	z-index: 1;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	position: absolute;
 }
 #loadingDiv {
-    height: var(--height);
-    width: 100vw;
-    postion: absolute;
-    z-index: 100;
-    top: 0;
-    overflow: hidden;
-    background-color: #F2B79F;
-    display: flex;
-    justify-content: center;
+	height: var(--height);
+	width: 100vw;
+	postion: absolute;
+	z-index: 100;
+	top: 0;
+	overflow: hidden;
+	background-color: #F2B79F;
+	display: flex;
+	justify-content: center;
 }
 .creamContainer {
-    align-self: center;
-    height: 25vw;
-    padding-top: 25vw;
-    z-index: 500;
+	align-self: center;
+	z-index: 500;
+	padding-top: calc(var(--height)/3.5);
+
 }
 .nav-link {
-    color: #6095CF;
+	color: #6095CF;
 }
 .flex-equal > * {
-    flex: 1;
+	flex: 1;
 }
 
 @media (min-width: 768px) {
 .flex-md-equal > * {
-    flex: 1;
+	flex: 1;
 }
 }
 .content-bg {
-    background-color: rgba(255,255,255,0.8);
+	background-color: rgba(255,255,255,0.8);
 }
 .main {
-    padding-top: 100px;
+	padding-top: 100px;
 }
 .nav-trans {
-    transition: all .25s;
+	transition: all .25s;
 }
 .nav-trans:hover {
-    transform: translateX(10px);
+	transform: translateX(10px);
 }
 .nav-trans:not(:hover) {
-    transform: translateX(0px);
+	transform: translateX(0px);
 }
 .trans {
-    transition: all .25s;
+	transition: all .25s;
 }
 .bg-custom {
-    background-color: rgba(0,0,0,0.92);
+	background-color: rgba(0,0,0,0.92);
 }
 .button-fixed {
-    bottom: 0;
-    position: fixed;
-    right: 0;
-    border-radius: 4px;
+	bottom: 0;
+	position: fixed;
+	right: 0;
+	border-radius: 4px;
 }
 .fas {
-    cursor: pointer;
-    font-size: 24px;
+	cursor: pointer;
+	font-size: 24px;
 }
 .spinner-pos {
-    position: absolute;
-    bottom: 10%;
-    left: 0;
-    right: 0;
-    margin: auto;
+	position: absolute;
+	bottom: 10%;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 .parent {
-    width: 100%;
+	width: 100%;
 }
 .scroll-on-view {
-    transition: all 1.5s;
+	transition: all 1.5s;
 }
 .btn-secondary {
-    background-color: #F2B79F;
-    border-color: #F4937D
+	background-color: #F2B79F;
+	border-color: #F4937D
 }
 .btn-secondary:hover {
-    background-color: #FD6B61;
-    border-color: #F4937D
+	background-color: #FD6B61;
+	border-color: #F4937D
 }
-	.milkyLoad{
-		align-self: center;
-    	padding-top: 50px;
-		width: 220%;
-    	margin: auto;
-	}
+.hyperlink-top{
+	color: white;
+}
+.hyperlink-top:hover{
+	color: darkgrey;
+}	
 html {
-    scroll-behavior: smooth
+	scroll-behavior: smooth
 }
 :root {
 --rotation: 0deg;
@@ -208,9 +208,9 @@ html {
 </head>
 <body>
 <div id="background"> 
-    <script type="text/javascript">
+	<script type="text/javascript">
     /* The loading screen for the website */
-    $('body').append('<div id="loadingDiv"> <div class="spinner-pos spinner-border text-white"> </div><div class="loader"><div class="milkyLoad container"> <img src="assets/logo.svg" style="width: 30%"> </div>  <div class="creamContainer">   <div id="coneTop"><img src="assets/coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="assets/coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
+    $('body').append('<div id="loadingDiv"> <div class="spinner-pos spinner-border text-white"> </div><div class="loader">  <div class="creamContainer">   <div id="coneTop"><img src="assets/coneTopAsset 1.svg" style="width: 30%"></div><div id="coneBottom">  <img src="assets/coneBottomAsset 2.svg" style="width: 30%"></div></div> </div></div>');
 
     /* Functions which depend on load on page load */
     $(document).ready(function() {
@@ -618,174 +618,177 @@ $(window).resize(function() {
     }
 });     
 </script>
-    <nav class="navbar navbar-light fixed-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="assets/logo.svg" alt="Milky Logo"></a>
-        <button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
-        <div id="navContainer">
-            <div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <h1 class="lead" style="color: #200F87; font-size: 45px">Our Flavours</h1>
-                    </li>
-                    <li class="lead nav-item nav-trans"> <a class="nav-link" href="#001">Punky Road</a> </li>
-                    <li class="lead nav-item nav-trans"> <a class="nav-link" href="#003">Chocolate Chip Off the Block</a> </li>
-                    <li class="lead nav-item nav-trans"> <a class="nav-link" href="#005">Orange Orange</a> </li>
-                    <li class="lead nav-item nav-trans"> <a class="nav-link" href="#007">Masterful Mellon</a> </li>
-                    <li class="lead nav-item nav-trans"> <a class="nav-link" href="#009">Care'amel Dream</a> </li>
-                    <br>
-                    <li><p class="lead"><span style="border-bottom: 1px solid #505356">Contact us to order!</span></p><p>
-                        <a href="mailto:contact@milky.com">contact@milky.com</a> | <a href="tel:0800-461-0980">0800-461-0980</a></p></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <main class="main">
-        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn">
-            <div class="col-md-5 p-lg-5 mx-auto my-5">
-                <h1 class="display-4" id="headJump">Ice Cream <span id="delText" style="border-bottom: 2px solid #ffffff">Delivered</span> in a New Way</h1>
-                <p class="lead">From our shop to your door, enjoy premium Belguim ice cream without restraint</p>
-                <p class="lead"><span style="border-bottom: 1px solid #505356">Contact us to order!</span></p><p><a href="mailto:contact@milky.com">contact@milky.com</a> | <a href="tel:0800-461-0980">0800-461-0980</a></p>
-            </div>
-        </div>
-        <div class="lead position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn2">
-            <div class="row">
-                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 1.svg" style="height: 140px; margin: 10px" alt="Punky Road">
-                    <h2 class="head-underline lead" style="font-size: 35px">Punky Road</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
-                    <p><a class="btn btn-secondary btn-detail" href="#001">View details »</a></p>
-                </div>
-                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 2.svg" style="height: 140px; margin: 10px" alt="Chocolate Chip Off the Block">
-                    <h2 class="head-underline lead" style="font-size: 35px">Chocolate Chip Off the Block</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
-                    <p><a class="btn btn-secondary btn-detail" href="#003">View details »</a></p>
-                </div>
-                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 3.svg" style="height: 140px; margin: 10px" alt="Orange Orange">
-                    <h2 class="head-underline lead" style="font-size: 35px">Orange Orange</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
-                    <p><a class="btn btn-secondary btn-detail" href="#005">View details »</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="lead position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn3">
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 4.svg" style="height: 140px; margin: 10px" alt="Masterful Orange">
-                    <h2 class="head-underline lead" style="font-size: 35px">Masterful Mellon</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
-                    <p><a class="btn btn-secondary btn-detail" href="#007">View details »</a></p>
-                </div>
-                <div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 5.svg" style="height: 140px; margin: 10px" alt="Care'amel Dream">
-                    <h2 class="head-underline lead" style="font-size: 35px">Care'amel Dream</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
-                    <p><a class="btn btn-secondary btn-detail" href="#009">View details »</a></p>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
-        </div>
-        <div id="011">
-            <div id="012" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg">
-                <h1 class="lead" style="font-size: 50px"><span style="border-bottom: 2px solid">Our Flavours</span></h1>
-            </div>
-        </div>
-        <div class="parent" id="001">
-            <div id="002" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
-                <h2 class="lead" style="font-size: 35px">Punky Road</h2>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-6">
-                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
-                            
-                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
-                    </div>
-                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 1.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
-                </div>
-            </div>
-        </div>
-        <div class="parent" id="003">
-            <div id="004" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
-                <h2 class="lead" style="font-size: 35px">Chocolate Chip Off the Block</h2>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-6">
-                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
-                            
-                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
-                    </div>
-                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 2.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
-                </div>
-            </div>
-        </div>
-        <div class="parent" id="005">
-            <div id="006" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
-                <h2 class="lead" style="font-size: 35px">Orange Orange</h2>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-6">
-                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
-                            
-                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
-                    </div>
-                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 3.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
-                </div>
-            </div>
-        </div>
-        <div class="parent" id="007">
-            <div id="008" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
-                <h2 class="lead" style="font-size: 35px">Masterful Mellon</h2>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-6">
-                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
-                            
-                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
-                    </div>
-                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 4.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
-                </div>
-            </div>
-        </div>
-        <div class="parent" id="009">
-            <div id="010" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
-                <h2 class="lead" style="font-size: 35px">Care'amel Dream</h2>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-6">
-                        <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
-                            
-                            Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
-                    </div>
-                    <div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 5.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
-                </div>
-            </div>
-        </div>
-        <div id="cookies-notify-container">
-            <div class="lead row">
-                <div class="col-md-4 col-sm-12 button-fixed">
-                    <div class="p-3 pb-4 text-white" style="background-color: rgba(0,0,0,0.6)">
-                        <div class="row">
-                            <div class="col-10">
-                                <h2>Allow Cookies</h2>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <button id="cookies-notify-button" type="button" class="btn btn-danger w-100">Accept Cookies</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="position-relative text-muted text-center blockquote-footer" style="z-index: 15">
-            <div class="container-fluid" style="background-color: #F2B79F; border-top: 5px solid #EB745F">
-                <div class="container" style="padding: 15px">
-                    <p> <a href="#">Back to top</a> </p>
-                    <p style="color: white"> © 2021 Milky. All rights reserved. Created by Kyan Bradley </p>
-                </div>
-            </div>
-        </footer>
-    </main>
+	<nav class="navbar navbar-light fixed-top" style="background-color: #FFFFFF; border-bottom-style: solid; border-bottom-color: #F2B79F;" id="changeColor"> <a class="navbar-brand" href="#"> <img id="navbarImg" src="assets/logo.svg" alt="Milky Logo"></a>
+		<button class="navbar-toggler bg-light" type="button" id="navbarButton"> <span class="navbar-toggler-icon"></span> </button>
+		<div id="navContainer">
+			<div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<h1 class="lead" style="color: #200F87; font-size: 45px">Our Flavours</h1>
+					</li>
+					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#001">Punky Road</a> </li>
+					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#003">Chocolate Chip Off the Block</a> </li>
+					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#005">Orange Orange</a> </li>
+					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#007">Masterful Mellon</a> </li>
+					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#009">Care'amel Dream</a> </li>
+					<br>
+					<li>
+						<p class="lead"><span style="border-bottom: 1px solid #505356">Contact us to order!</span></p>
+						<p> <a href="mailto:contact@milky.com">contact@milky.com</a> | <a href="tel:0800-461-0980">0800-461-0980</a></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="main">
+		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn">
+			<div class="col-md-5 p-lg-5 mx-auto my-5">
+				<h1 class="display-4" id="headJump">Ice Cream <span id="delText" style="border-bottom: 2px solid #ffffff">Delivered</span> in a New Way</h1>
+				<p class="lead">From our shop to your door, enjoy premium Belguim ice cream without restraint</p>
+				<p class="lead"><span style="border-bottom: 1px solid #505356">Contact us to order!</span></p>
+				<p><a href="mailto:contact@milky.com">contact@milky.com</a> | <a href="tel:0800-461-0980">0800-461-0980</a></p>
+			</div>
+		</div>
+		<div class="lead position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn2">
+			<div class="row">
+				<div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 1.svg" style="height: 140px; margin: 10px" alt="Punky Road">
+					<h2 class="head-underline lead" style="font-size: 35px">Punky Road</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+					<p><a class="btn btn-secondary btn-detail" href="#001">View details »</a></p>
+				</div>
+				<div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 2.svg" style="height: 140px; margin: 10px" alt="Chocolate Chip Off the Block">
+					<h2 class="head-underline lead" style="font-size: 35px">Chocolate Chip Off the Block</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+					<p><a class="btn btn-secondary btn-detail" href="#003">View details »</a></p>
+				</div>
+				<div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 3.svg" style="height: 140px; margin: 10px" alt="Orange Orange">
+					<h2 class="head-underline lead" style="font-size: 35px">Orange Orange</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+					<p><a class="btn btn-secondary btn-detail" href="#005">View details »</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="lead position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg" id="containerFlowIn3">
+			<div class="row">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 4.svg" style="height: 140px; margin: 10px" alt="Masterful Orange">
+					<h2 class="head-underline lead" style="font-size: 35px">Masterful Mellon</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+					<p><a class="btn btn-secondary btn-detail" href="#007">View details »</a></p>
+				</div>
+				<div class="col-lg-4 raise-trans"> <img class="trans" src="assets/coneTopAsset 5.svg" style="height: 140px; margin: 10px" alt="Care'amel Dream">
+					<h2 class="head-underline lead" style="font-size: 35px">Care'amel Dream</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit mollis, interdum turpis sed, dictum tortor.</p>
+					<p><a class="btn btn-secondary btn-detail" href="#009">View details »</a></p>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+		</div>
+		<div id="011">
+			<div id="012" class="scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg">
+				<h1 class="lead" style="font-size: 50px"><span style="border-bottom: 2px solid">Our Flavours</span></h1>
+			</div>
+		</div>
+		<div class="parent" id="001">
+			<div id="002" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+				<h2 class="lead" style="font-size: 35px">Punky Road</h2>
+				<br>
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-6">
+						<p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+							
+							Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+					</div>
+					<div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 1.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+				</div>
+			</div>
+		</div>
+		<div class="parent" id="003">
+			<div id="004" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+				<h2 class="lead" style="font-size: 35px">Chocolate Chip Off the Block</h2>
+				<br>
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-6">
+						<p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+							
+							Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+					</div>
+					<div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 2.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+				</div>
+			</div>
+		</div>
+		<div class="parent" id="005">
+			<div id="006" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+				<h2 class="lead" style="font-size: 35px">Orange Orange</h2>
+				<br>
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-6">
+						<p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+							
+							Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+					</div>
+					<div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 3.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+				</div>
+			</div>
+		</div>
+		<div class="parent" id="007">
+			<div id="008" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+				<h2 class="lead" style="font-size: 35px">Masterful Mellon</h2>
+				<br>
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-6">
+						<p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+							
+							Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+					</div>
+					<div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 4.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+				</div>
+			</div>
+		</div>
+		<div class="parent" id="009">
+			<div id="010" class="lead scroll-on-view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center content-bg raise-grow-trans">
+				<h2 class="lead" style="font-size: 35px">Care'amel Dream</h2>
+				<br>
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-6">
+						<p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus libero. Ut tristique erat nec semper rhoncus. Proin sed tempor nunc. Cras sed lobortis sapien. Phasellus eget pulvinar nisi, vitae porta nulla. Proin rutrum erat nec purus tempus feugiat. Sed vitae efficitur lectus. Donec pharetra tellus leo, vitae sodales enim tincidunt quis. Proin eu volutpat arcu. Fusce vulputate elit ut ligula mollis porta.
+							
+							Ut vel quam quis augue auctor interdum dignissim sed diam. Etiam pellentesque leo a ante blandit dignissim. Mauris consectetur auctor enim, sed mattis tortor aliquam id. Proin at tempus arcu. Etiam commodo, dui eu egestas sagittis, lorem odio ultrices est, eget rutrum tellus metus at odio. Curabitur in nisi felis. Nunc consequat pretium nisl. Suspendisse quis felis in magna pellentesque ultricies.</p>
+					</div>
+					<div class="col-lg-5"> <img class="trans" src="assets/coneTopAsset 5.svg" style="height: 140px; margin: 10px" alt="Punky Road"></div>
+				</div>
+			</div>
+		</div>
+		<div id="cookies-notify-container">
+			<div class="lead row">
+				<div class="col-md-4 col-sm-12 button-fixed">
+					<div class="p-3 pb-4 text-white" style="background-color: rgba(0,0,0,0.6)">
+						<div class="row">
+							<div class="col-10">
+								<h2>Allow Cookies</h2>
+							</div>
+						</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. </p>
+						<button id="cookies-notify-button" type="button" class="btn btn-danger w-100">Accept Cookies</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="position-relative text-muted text-center blockquote-footer" style="z-index: 15">
+			<div class="container-fluid" style="background-color: #F2B79F; border-top: 5px solid #EB745F">
+				<div class="container" style="padding: 15px">
+					<p> <a href="#" class="hyperlink-top">Back to top</a> </p>
+					<p style="color: white"> © 2021 Milky. All rights reserved. Created by Kyan Bradley </p>
+				</div>
+			</div>
+		</footer>
+	</main>
 </div>
 </body>
 </html>
