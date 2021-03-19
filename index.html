@@ -73,6 +73,8 @@
 	position: fixed;
 	right: 0;
 	top: 100px;
+	height: calc(var(--height)/1.2);
+	overflow-y: scroll;
 	border-bottom-style: solid;
 	border-left-style: solid;
 	border-bottom-color: #F2B79F;
@@ -124,7 +126,6 @@
 	align-self: center;
 	z-index: 500;
 	padding-top: calc(var(--height)/3.5);
-
 }
 .nav-link {
 	color: #6095CF;
@@ -190,12 +191,12 @@
 	background-color: #FD6B61;
 	border-color: #F4937D
 }
-.hyperlink-top{
+.hyperlink-top {
 	color: white;
 }
-.hyperlink-top:hover{
+.hyperlink-top:hover {
 	color: darkgrey;
-}	
+}
 html {
 	scroll-behavior: smooth
 }
@@ -623,18 +624,16 @@ $(window).resize(function() {
 		<div id="navContainer">
 			<div class="container-fluid"  style="position: relative" id="collapsibleNavbar">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<h1 class="lead" style="color: #200F87; font-size: 45px">Our Flavours</h1>
-					</li>
+					<li class="nav-item nav-trans"> <a class="nav-link lead" href="#containerFlowIn2" style="color: #200F87; font-size: 45px">Our Flavours</a> </li>
 					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#001">Punky Road</a> </li>
 					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#003">Chocolate Chip Off the Block</a> </li>
 					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#005">Orange Orange</a> </li>
 					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#007">Masterful Mellon</a> </li>
 					<li class="lead nav-item nav-trans"> <a class="nav-link" href="#009">Care'amel Dream</a> </li>
-					<br>
+					<li class="lead nav-item nav-trans"><a class="nav-link" href="#" style="color: #200F87; font-size: 35px">About Us</a></li>
 					<li>
 						<p class="lead"><span style="border-bottom: 1px solid #505356">Contact us to order!</span></p>
-						<p> <a href="mailto:contact@milky.com">contact@milky.com</a> | <a href="tel:0800-461-0980">0800-461-0980</a></p>
+						<p class="lead" style="font-size: 16px;"> <a href="mailto:contact@milky.com">contact@milky.com</a> | <a href="tel:0800-461-0980">0800-461-0980</a></p>
 					</li>
 				</ul>
 			</div>
