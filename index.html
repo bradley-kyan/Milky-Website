@@ -15,6 +15,72 @@
 <script src="script/anime-3.2.1/anime.min.js"></script> 
 <script src="script/jquery.visible.min.js"></script>
 <style>
+html {
+    scroll-behavior: smooth;
+    overflow: overlay;
+}
+/* Scrollbar */     
+::-webkit-scrollbar {
+    width: var(--scrollbar);
+}
+::-webkit-scrollbar-track {
+    background-color: rgba(255,255,255,0)
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(130,130,130,0.78);
+    border-radius: 3.5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #515151;
+}
+/*--------------*/ 
+/* Custom Root Values */
+    
+:root {
+--rotation: 0deg;
+--height;
+--width;
+}    
+/* Loading Containers */    
+#loadingDiv {
+    height: var(--height);
+    width: 100vw;
+    postion: absolute;
+    z-index: 100;
+    top: 0;
+    overflow: hidden;
+    background-color: #F2B79F;
+    display: flex;
+    justify-content: center;
+}
+.creamContainer {
+    align-self: center;
+    z-index: 500;
+    padding-top: calc(var(--height)/3.5);
+}
+/*--------------*/
+/* Navbar */
+#navContainer {
+    background-color: #FFFFFF;
+    z-index: 4;
+    display: inherit;
+    position: fixed;
+    right: 0;
+    top: 100px;
+    height: calc(var(--height)/1.2);
+    overflow: scroll;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-color: #F2B79F;
+    border-left-color: #F2B79F;
+}
+#navbarImg {
+    width: 90px;
+}    
+.nav-link {
+    color: #6095CF;
+}
+/* Responsive Navbar sizing */    
 @media(max-height: 500px) {
 .nav-item {
     font-size: 18px;
@@ -58,34 +124,38 @@
     padding-right: 50px
 }
 }
+/*--------------*/    
+/* Content containers */ 
 .body {
     height: 100vw;
     width: 80vw;
     background-color: white;
+}
+.bodyContent {
+    background-color: white;
+    min-height: var(--height);
+    width: 90vw;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
 }
 .body-behind {
     width: 100vw;
     overflow: hidden;
     z-index: 5;
     position: fixed
+}      
+.content-bg {
+    background-color: rgba(255,255,255,0.8);
 }
-#navContainer {
-    background-color: #FFFFFF;
-    z-index: 4;
-    display: inherit;
-    position: fixed;
-    right: 0;
-    top: 100px;
-    height: calc(var(--height)/1.2);
-    overflow: scroll;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-bottom-color: #F2B79F;
-    border-left-color: #F2B79F;
+.main {
+    padding-top: 100px;
 }
-#navbarImg {
-    width: 90px;
-}
+/*--------------*/
+/* Background image => Rotating image */    
 #background {
     overflow: hidden;
     position: absolute;
@@ -102,52 +172,9 @@
     background-size: 2.5%;
     position: fixed;
     transform: rotate(var(--rotation));
-}
-.bodyContent {
-    background-color: white;
-    min-height: var(--height);
-    width: 90vw;
-    z-index: 1;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    position: absolute;
-}
-#loadingDiv {
-    height: var(--height);
-    width: 100vw;
-    postion: absolute;
-    z-index: 100;
-    top: 0;
-    overflow: hidden;
-    background-color: #F2B79F;
-    display: flex;
-    justify-content: center;
-}
-.creamContainer {
-    align-self: center;
-    z-index: 500;
-    padding-top: calc(var(--height)/3.5);
-}
-.nav-link {
-    color: #6095CF;
-}
-.flex-equal > * {
-    flex: 1;
-}
-
-@media (min-width: 768px) {
-.flex-md-equal > * {
-    flex: 1;
-}
-}
-.content-bg {
-    background-color: rgba(255,255,255,0.8);
-}
-.main {
-    padding-top: 100px;
-}
+} 
+/*--------------*/ 
+/* Mavigation Items trnasformations */    
 .nav-trans {
     transition: all .25s;
 }
@@ -157,6 +184,8 @@
 .nav-trans:not(:hover) {
     transform: translateX(0px);
 }
+/*--------------*/
+/* Content Transitions for JS scripts*/    
 .trans {
     transition: all .25s;
 }
@@ -175,19 +204,8 @@
 .trans-raise-grow {
     transition: all .25s;
 }
-.bg-custom {
-    background-color: rgba(0,0,0,0.92);
-}
-.button-fixed {
-    bottom: 0;
-    position: fixed;
-    right: 0;
-    border-radius: 4px;
-}
-.fas {
-    cursor: pointer;
-    font-size: 24px;
-}
+/*--------------*/
+/* Loading screen spinner screen position */    
 .spinner-pos {
     position: absolute;
     bottom: 10%;
@@ -195,12 +213,16 @@
     right: 0;
     margin: auto;
 }
+/*--------------*/
+/* Content scroll-in containers */    
 .parent {
     width: 100%;
 }
 .scroll-on-view {
     transition: all 1.5s;
 }
+/*--------------*/ 
+/* Buttons */    
 .btn-secondary {
     background-color: #F2B79F;
     border-color: #F4937D
@@ -209,39 +231,19 @@
     background-color: #FD6B61;
     border-color: #F4937D
 }
+.button-fixed {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+    border-radius: 4px;
+}
+/*--------------*/ 
+/* Hyperlink colors */    
 .hyperlink-top {
     color: #FFFFFF;
 }
 .hyperlink-top:hover {
     color: black;
-}
-html {
-    scroll-behavior: smooth;
-    overflow: overlay;
-}
-/* width */
-::-webkit-scrollbar {
-width: var(--scrollbar);
-}
-/* Track */
-::-webkit-scrollbar-track {
-background-color: rgba(255,255,255,0)
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-background: rgba(130,130,130,0.78);
-border-radius: 3.5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-background: #515151;
-}
-:root {
---rotation: 0deg;
---height;
---width;
 }
 </style>
 </head>
@@ -256,7 +258,8 @@ $(document).ready(function() {
 	$('.navbar').hide();
 	$('.main').hide();
 
-	if ($(window).height() < 600 || $(window).width() < 400) { // For always showing scrollbar on moblie devices smaller than values
+    /* For always showing scrollbar on moblie devices smaller than values */
+	if ($(window).height() < 600 || $(window).width() < 400) { 
 		document.documentElement.style.setProperty('--scrollbar', 7 + 'px');
 		scrollState = 1;
 	}
@@ -266,15 +269,16 @@ $(document).ready(function() {
 	}
 
 	setTimeout(delayState, 100); // Delays the scroll-on body function which prevents activation on a page refresh
-	/* Hover animation for pictures when parent container is hovered */
+    
+	/* Hover animation to child when parent container is hovered */
 	$('.raise-trans').mouseover(function() { // Gets the class 'raise-trans'
 		$(this).find(".trans").css('transform', 'translateY(-15px)'); // Finds the child element of the 'raise-trans' class 'trans' and changes css styling
-		$(this).find(".trans-2").css('transform', 'translateY(-8px)'); // Half transform version
-		$(this).find(".trans-3").css('transform', 'translateY(-5px)'); // Third transform version
-		$(this).find(".trans-4").css('transform', 'translateY(-3px)'); // Quarter transform version
+		$(this).find(".trans-2").css('transform', 'translateY(-8px)'); // Half transformed version
+		$(this).find(".trans-3").css('transform', 'translateY(-5px)'); // Third transformed version
+		$(this).find(".trans-4").css('transform', 'translateY(-3px)'); // Quarter transformed version
 	});
-	$('.raise-trans').mouseleave(function() {
-		$(this).find(".trans").css('transform', 'translateY(0px)');
+	$('.raise-trans').mouseleave(function() { // Sets position back to original when not hovered
+		$(this).find(".trans").css('transform', 'translateY(0px)'); 
 		$(this).find(".trans-2").css('transform', 'translateY(0px)');
 		$(this).find(".trans-3").css('transform', 'translateY(0px)');
 		$(this).find(".trans-4").css('transform', 'translateY(0px)');
@@ -299,6 +303,7 @@ $(document).ready(function() {
 		$(this).find(".trans-grow").css('transform', 'scale(1)');
 	});
 
+    /* Closes cookie store notification on accept button press */
 	$('#cookies-notify-button').click(function() {
 		$('#cookies-notify-container').fadeOut(700, function() {
 			$("#cookies-notify-container").remove();
@@ -307,7 +312,6 @@ $(document).ready(function() {
 })
 
 /* Animation for the ice cream and background color pulse on page loading screen */
-
 $(window).on('load', function() {
 
 	anime({
@@ -406,7 +410,7 @@ $(window).on('load', function() {
 			targets: '#loadingDiv',
 			background: '#F2B79F'
 		}, 500)
-	setTimeout(removeLoader, 3700);
+	setTimeout(removeLoader, 3700); // Calls Removeloader() function after 3700 ms delay
 });
 
 
@@ -417,7 +421,7 @@ function removeLoader() {
 		$('.navbar').show();
 		$('.main').show();
 
-		document.cookie = "Milky Ice Cream!=No cookies to see here, only ice cream!; path=*/;"; // Secret Cookie
+		document.cookie = "Milky Ice Cream!=No cookies to see here, only ice cream! Use Code: 'Easter2021', for 15% off!; path=*/;"; // Secret easter-egg Cookie
 
 		/* >>Animations appear in order of play<< */
 
@@ -628,7 +632,7 @@ var state8 = 0;
 /* Function used to check if the scroll-in container is positioned on screen through jquery.visible.min.js script*/
 $(window).scroll(function() {
 
-	if (scrollState == 0) {
+	if (scrollState == 0) { // Scrollbar() function call
 		scrollbar();
 	}
 
@@ -690,8 +694,9 @@ $(window).scroll(function() {
 	document.documentElement.style.setProperty('--rotation', currentRotation + 'deg'); // Sets the --rotation variable
 });
 
-var scrollState = 0;
+/* Function used to set the width of the scroll bar in order to creation show/hide animation */             
 
+var scrollState = 0; // Used to make sure that only one instance of scrollbar() is run on scroll.
 function scrollbar() {
 
 	var myObject = {
@@ -708,11 +713,11 @@ function scrollbar() {
 		round: 1,
 		duration: 500,
 		update: function() {
-			document.documentElement.style.setProperty('--scrollbar', myObject.prop1 + 'px');
+			document.documentElement.style.setProperty('--scrollbar', myObject.prop1 + 'px'); // Sets --scrollbar prop linearly => 0-7px wide
 		},
 	});
 
-	setTimeout(function() {
+	setTimeout(function() { // Hide scrollbar after 7 seconds.
 		anime({
 			targets: myObject,
 			prop2: 0,
@@ -720,10 +725,10 @@ function scrollbar() {
 			round: 1,
 			duration: 500,
 			update: function() {
-				document.documentElement.style.setProperty('--scrollbar', myObject.prop2 + 'px');
+				document.documentElement.style.setProperty('--scrollbar', myObject.prop2 + 'px'); // Sets --scrollbar prop linearly => 7-0px wide
 			},
 			complete: function() {
-				scrollState = 0;
+				scrollState = 0; // Tells onscroll function that function is ready to be run again
 			}
 		});
 	}, 7000)
@@ -743,6 +748,8 @@ $(window).resize(function() {
 	document.documentElement.style.setProperty('--width', $(window).width() + 'px');
 	document.documentElement.style.setProperty('--height', $(window).height() + 'px');
 
+    /* Makes Scrollbar always show if the device is smaller that a certain size => for mobile devices / if window is resized */
+    
 	if ($(window).height() < 600 || $(window).width() < 400) {
 		document.documentElement.style.setProperty('--scrollbar', 7 + 'px');
 		scrollState = 1;
