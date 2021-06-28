@@ -1,4 +1,4 @@
-# 13TPI-Website
+# Milky-Website
 
 ### [View Website Here](https://bradley-kyan.github.io/13TPI-Website/)
 
