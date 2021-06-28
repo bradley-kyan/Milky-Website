@@ -1,6 +1,6 @@
 # Milky-Website
 
-### [View Website Here](https://bradley-kyan.github.io/13TPI-Website/)
+### [View Website Here](https://bradley-kyan.github.io/Milky-Website/)
 
 Single page website created as a school project at Avondale College with a focus on web animations and interactivity.
 
